@@ -7,7 +7,8 @@
             <div class="layui-card">
                 <div class="layui-card-header">网站信息</div>
                 <div class="layui-card-body">
-                    <form class="layui-form js-ajax-form" role="form" method="post" action="{:url('admin/setting/sitepost')}">
+                    <form class="layui-form js-ajax-form" role="form" method="post"
+                          action="{:url('admin/setting/sitepost')}">
                         <div class="layui-tab">
                             <ul class="layui-tab-title">
                                 <li class="layui-this">{:lang('WEB_SITE_INFOS')}</li>
@@ -20,12 +21,37 @@
                             <div class="layui-tab-content">
                                 <div class="layui-tab-item layui-show">
                                     <div class="layui-form-item">
-                                        <label for="input-site-name" class="layui-form-label"><span
-                                                class="form-required">*</span>{:lang('WEBSITE_NAME')}</label>
+                                        <label for="input-site-name" class="layui-form-label">
+                                            <span class="form-required">*</span>{:lang('WEBSITE_NAME')}
+                                        </label>
                                         <div class="layui-input-block">
                                             <input type="text" class="layui-input" id="input-site-name"
                                                    name="options[site_name]"
                                                    value="{$site_info.site_name|default=''}">
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">网站 logo</label>
+                                        <div class="layui-input-block">
+                                            <input type="hidden" name="options[site_logo]" id="thumbnail"
+                                                   value="{$site_info.site_logo|default=''}">
+                                            <empty name="$site_info.site_logo">
+                                                <a href="javascript:uploadOneImage('图片上传','#thumbnail');">
+                                                    <img src="__TMPL__/public/assets/images/default-thumbnail.png"
+                                                         id="thumbnail-preview"
+                                                         width="135" style="cursor: pointer"/>
+                                                </a>
+                                                <else/>
+                                                <a href="javascript:uploadOneImage('图片上传','#thumbnail');">
+                                                    <img src="{:cmf_get_image_url($site_info['site_logo'])}"
+                                                         id="thumbnail-preview"
+                                                         width="135" style="cursor: pointer"/>
+                                                </a>
+                                            </empty>
+                                            <input type="button" class="layui-btn layui-btn-sm btn-cancel-thumbnail"
+                                                   value="取消图片">
+                                            <p class="help-block">建议图片尺寸高度不要超过 <span style="color: red;">100</span> px
+                                            </p>
                                         </div>
                                     </div>
                                     <div class="layui-form-item">
@@ -53,51 +79,6 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <!--
-                                    <div class="layui-form-item">
-                                        <label for="input-mobile_tpl_enabled" class="layui-form-label">{:lang('ENABLE_MOBILE_THEME')}</label>
-                                        <div class="layui-input-block">
-                                            <php>$mobile_tpl_enabled_checked=empty($mobile_tpl_enabled)?'':'checked';</php>
-                                            <div class="checkbox">
-                                                <label><input type="checkbox" name="options[mobile_tpl_enabled]" value="1" id="input-mobile_tpl_enabled" {$mobile_tpl_enabled_checked}></label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    -->
-                                    <div class="layui-form-item">
-                                        <label for="input-site_admin_theme" class="layui-form-label">后台模板</label>
-                                        <div class="layui-input-block">
-                                            <php>
-                                                $site_admin_theme=empty($admin_settings['admin_theme'])?'':$admin_settings['admin_theme'];
-                                            </php>
-                                            <select class="layui-select" name="admin_settings[admin_theme]"
-                                                    id="input-site_admin_theme">
-                                                <foreach name="admin_themes" item="vo">
-                                                    <php>$admin_theme_selected = $site_admin_theme == $vo ? "selected" :
-                                                        "";
-                                                    </php>
-                                                    <option value="{$vo}" {$admin_theme_selected}>{$vo}</option>
-                                                </foreach>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="layui-form-item">
-                                        <label for="input-site_adminstyle" class="layui-form-label">{:lang('WEBSITE_ADMIN_THEME')}</label>
-                                        <div class="layui-input-block">
-                                            <php>
-                                                $site_admin_style=empty($admin_settings['admin_style'])?cmf_get_admin_style():$admin_settings['admin_style'];
-                                            </php>
-                                            <select class="layui-select" name="admin_settings[admin_style]"
-                                                    id="input-site_adminstyle">
-                                                <foreach name="admin_styles" item="vo">
-                                                    <php>$admin_style_selected = $site_admin_style == $vo ? "selected" :
-                                                        "";
-                                                    </php>
-                                                    <option value="{$vo}" {$admin_style_selected}>{$vo}</option>
-                                                </foreach>
-                                            </select>
-                                        </div>
-                                    </div>
                                     <if condition="APP_DEBUG && false">
                                         <div class="layui-form-item">
                                             <label for="input-default_app" class="layui-form-label">默认应用</label>
@@ -108,7 +89,8 @@
                                                 <select class="layui-select" name="cmf_settings[default_app]"
                                                         id="input-default_app">
                                                     <foreach name="apps" item="vo">
-                                                        <php>$default_app_selected = $site_default_app == $vo ? "selected" :
+                                                        <php>$default_app_selected = $site_default_app == $vo ?
+                                                            "selected" :
                                                             "";
                                                         </php>
                                                         <option value="{$vo}" {$default_app_selected}>{$vo}</option>
@@ -250,8 +232,8 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="__STATIC__/js/admin.js"></script>
 <script src="__STATIC__/okadmin/lib/layui/layui.all.js"></script>
+<script src="__TMPL__/public/all.js"></script>
 <script>
     layui.use(['form', 'laydate'], function () {
         var form = layui.form,
@@ -259,6 +241,13 @@
 
         laydate.render({
             elem: '#input-birthday'
+        });
+    });
+
+    $(function () {
+        $('.btn-cancel-thumbnail').click(function () {
+            $('#thumbnail-preview').attr('src', '__TMPL__/public/assets/images/default-thumbnail.png');
+            $('#thumbnail').val('');
         });
     });
 </script>
