@@ -1,0 +1,69 @@
+<include file="public@header" />
+</head>
+<body>
+<div class="layui-fluid wrap js-check-wrap">
+	<div class="layui-row">
+		<div class="layui-col-md12">
+			<div class="layui-card">
+				<div class="layui-card-header">角色管理</div>
+				<div class="layui-card-body">
+					<div class="layui-tab">
+						<ul class="layui-tab-title">
+							<li class="layui-this"><a href="{:url('rbac/index')}">{:lang('ADMIN_RBAC_INDEX')}</a></li>
+							<li><a href="{:url('rbac/roleAdd')}">{:lang('ADMIN_RBAC_ROLEADD')}</a></li>
+						</ul>
+						<div class="layui-tab-content">
+							<form action="{:url('Rbac/listorders')}" method="post" class="layui-form">
+								<table class="layui-table">
+									<thead>
+									<tr>
+										<th width="40">ID</th>
+										<th align="left">{:lang('ROLE_NAME')}</th>
+										<th align="left">{:lang('ROLE_DESCRIPTION')}</th>
+										<th width="60" align="left">{:lang('STATUS')}</th>
+										<th width="160">{:lang('ACTIONS')}</th>
+									</tr>
+									</thead>
+									<tbody>
+									<foreach name="roles" item="vo">
+										<tr>
+											<td>{$vo.id}</td>
+											<td>{$vo.name}</td>
+											<td>{$vo.remark}</td>
+											<td>
+												<if condition="$vo['status'] eq 1">
+													<span class="layui-badge layui-bg-orange">已启用</span>
+												<else />
+													<span class="layui-badge layui-bg-red">已禁用</span>
+												</if>
+											</td>
+											<td>
+												<div class="layui-btn-group">
+													<if condition="$vo['id'] eq 1">
+														<span class="layui-btn layui-btn-xs layui-disabled">{:lang('ROLE_SETTING')}</span>
+														<span class="layui-btn layui-btn-xs layui-disabled">{:lang('EDIT')}</span>
+														<span class="layui-btn layui-btn-xs layui-btn-danger layui-disabled">{:lang('DELETE')}</span>
+														<else />
+														<a class="layui-btn layui-btn-xs" href="{:url('Rbac/authorize',array('id'=>$vo['id']))}">{:lang('ROLE_SETTING')}</a>
+														<a class="layui-btn layui-btn-xs" href="{:url('Rbac/roleedit',array('id'=>$vo['id']))}">{:lang('EDIT')}</a>
+														<a class="layui-btn layui-btn-xs layui-btn-danger js-ajax-delete" class="" href="{:url('Rbac/roledelete',array('id'=>$vo['id']))}">{:lang('DELETE')}</a>
+													</if>
+												</div>
+											</td>
+										</tr>
+									</foreach>
+									</tbody>
+								</table>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+<script src="__STATIC__/js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<include file="public@header" />
+</head>
+<body>
+	<div class="layui-fluid wrap js-check-wrap">
+		<div class="layui-row">
+			<div class="layui-col-md12">
+				<div class="layui-card">
+					<div class="layui-card-header">幻灯片管理</div>
+					<div class="layui-card-body">
+						<div class="layui-tab">
+							<ul class="layui-tab-title">
+								<li class="layui-this"><a href="{:url('slide/index')}">幻灯片列表</a></li>
+								<li><a href="{:url('slide/add')}">添加幻灯片</a></li>
+							</ul>
+							<div class="layui-tab-content">
+								<table class="layui-table">
+									<thead>
+									<tr>
+										<th width="50">ID</th>
+										<th>幻灯片</th>
+										<th>备注</th>
+										<th width="160">{:lang('ACTIONS')}</th>
+									</tr>
+									</thead>
+									<tbody>
+									<php>
+
+									</php>
+									<foreach name="slides" item="vo">
+										<tr>
+											<td>{$vo.id}</td>
+											<td>{$vo.name}</td>
+											<td>
+												{$vo.remark}
+											</td>
+											<td>
+												<div class="layui-btn-group">
+													<a class="layui-btn layui-btn-xs" href="{:url('slide/edit',array('id'=>$vo['id']))}">{:lang('EDIT')}</a>
+													<a class="layui-btn layui-btn-xs" href="javascript:openIframeLayer('{:url('slideItem/index',array('slide_id'=>$vo['id']))}','管理 {$vo.name} 页面',{});">管理页面</a>
+													<a class="layui-btn layui-btn-xs layui-btn-danger js-ajax-delete" href="{:url('slide/delete',array('id'=>$vo['id']))}">{:lang('DELETE')}</a>
+												</div>
+											</td>
+										</tr>
+									</foreach>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<script src="__STATIC__/okadmin/lib/layui/layui.js"></script>
+	<script src="/themes/feed_admin/public/all.js"></script>
+</body>
+</html>

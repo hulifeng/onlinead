@@ -1,0 +1,67 @@
+<include file="public@header"/>
+</head>
+<body>
+<div class="layui-fluid wrap js-check-wrap">
+	<div class="layui-row">
+		<div class="layui-col-md12">
+			<div class="layui-card">
+				<div class="layui-card-header">文章标签</div>
+				<div class="layui-card-body">
+					<div class="layui-tab">
+						<ul class="layui-tab-title">
+							<li><a href="{:url('AdminTag/index')}">{:lang('ADMIN_TAG_INDEX')}</a></li>
+							<li class="layui-this"><a href="{:url('AdminTag/add')}">{:lang('ADMIN_TAG_ADD')}</a></li>
+						</ul>
+						<div class="layui-tab-content">
+							<form method="post" class="layui-form js-ajax-form" action="{:url('AdminTag/addPost')}">
+
+								<div class="layui-form-item">
+									<label class="layui-form-label"><span class="form-required">*</span>标签名称:</label>
+									<div class="layui-input-block">
+										<input type="text" class="layui-input" name="name" value="">
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label class="layui-form-label">状态:</label>
+									<div class="layui-input-block">
+										<select name="status" class="layui-select">
+											<foreach name="arrStatus" key="k" item="vo">
+												<option value="{$k}" >{$vo}</option>
+											</foreach>
+										</select>
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<button type="submit" class="layui-btn js-ajax-submit">{:lang("SAVE")}</button>
+										<a class="layui-btn layui-btn-primary" href="__URL__">返回</a>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+<script src="__STATIC__/js/admin.js"></script>
+<script src="__STATIC__/okadmin/lib/layui/layui.all.js"></script>
+<script>
+	layui.use(['form', 'laydate'], function () {
+		var form = layui.form,
+				laydate = layui.laydate;
+
+		laydate.render({
+			elem: '#start_date'
+		});
+
+		laydate.render({
+			elem: '#end_date'
+		});
+	});
+</script>
+</body>
+</html>

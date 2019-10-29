@@ -1,0 +1,116 @@
+<include file="public@header" />
+</head>
+<body>
+	<div class="layui-fluid wrap">
+		<div class="layui-row">
+			<div class="layui-col-md12">
+				<div class="layui-card">
+					<div class="layui-card-header">后台菜单</div>
+					<div class="layui-card-body">
+						<div class="layui-tab">
+							<ul class="layui-tab-title">
+								<li><a href="{:url('Menu/index')}">后台菜单</a></li>
+								<li class="layui-this"><a href="{:url('Menu/add')}">添加菜单</a></li>
+							</ul>
+						</div>
+						<div class="layui-tab-content">
+							<form method="post" class="layui-form js-ajax-form" action="{:url('menu/addPost')}">
+								<div class="layui-form-item">
+									<label for="input-parent_id" class="layui-form-label"><span class="form-required">*</span>上级</label>
+									<div class="layui-input-block">
+										<select class="layui-select" name="parent_id" id="input-parent_id">
+											<option value="0">作为一级菜单</option>{$select_category}
+										</select>
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label for="input-name" class="layui-form-label"><span class="form-required">*</span>名称</label>
+									<div class="layui-input-block">
+										<input type="text" class="layui-input" id="input-name" name="name">
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label for="input-app" class="layui-form-label"><span class="form-required">*</span>应用</label>
+									<div class="layui-input-block">
+										<input type="text" class="layui-input" id="input-app" name="app">
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label for="input-controller" class="layui-form-label"><span class="form-required">*</span>控制器</label>
+									<div class="layui-input-block">
+										<input type="text" class="layui-input" id="input-controller" name="controller">
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label for="input-action" class="layui-form-label"><span class="form-required">*</span>方法</label>
+									<div class="layui-input-block">
+										<input type="text" class="layui-input" id="input-action" name="action">
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label for="input-param" class="layui-form-label">参数</label>
+									<div class="layui-input-block">
+										<input type="text" class="layui-input" id="input-param" name="param">
+										<p class="help-block">例:id=3&amp;p=3</p>
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label for="input-icon" class="layui-form-label">图标</label>
+									<div class="layui-input-block">
+										<input type="text" class="layui-input" id="input-icon" name="icon">
+										<p class="help-block">
+											<a href="http://www.thinkcmf.com/font/font_awesome/icons.html" target="_blank">选择图标</a> 不带前缀fa-，如fa-user => user
+										</p>
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label for="input-remark" class="layui-form-label">备注</label>
+									<div class="layui-input-block">
+										<textarea class="layui-input" id="input-remark" name="remark"></textarea>
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label for="input-status" class="layui-form-label">状态</label>
+									<div class="layui-input-block" id="input-status">
+										<select class="layui-input" name="status">
+											<option value="1">在左侧菜单显示</option>
+											<option value="0">在左侧菜单隐藏</option>
+										</select>
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<label for="input-type" class="layui-form-label">类型</label>
+									<div class="layui-input-block">
+										<select class="layui-input" name="type" id="input-type">
+											<option value="1">有界面可访问菜单</option>
+											<option value="2">无界面可访问菜单</option>
+											<option value="0">只作为菜单</option>
+										</select>
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<button type="submit" class="layui-btn js-ajax-submit">{:lang('ADD')}</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<script src="__STATIC__/js/admin.js"></script>
+<script src="__STATIC__/okadmin/lib/layui/layui.all.js"></script>
+<script>
+	layui.use(['form', 'laydate'], function () {
+		var form = layui.form,
+				laydate = layui.laydate;
+
+		laydate.render({
+			elem: '#input-birthday'
+		});
+	});
+</script>
+</body>
+</html>

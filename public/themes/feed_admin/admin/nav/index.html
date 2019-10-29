@@ -1,0 +1,72 @@
+<include file="public@header"/>
+</head>
+<body>
+<div class="layui-fluid wrap js-check-wrap">
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <div class="layui-row">
+                <div class="layui-card">
+                    <div class="layui-card-header">导航管理</div>
+                    <div class="layui-card-body">
+                        <div class="layui-tab">
+                            <ul class="layui-tab-title">
+                                <li class="layui-this"><a href="{:url('nav/index')}">所有导航</a></li>
+                                <li><a href="{:url('nav/add')}">添加导航</a></li>
+                            </ul>
+                            <div class="layui-tab-content">
+                                <form action="{:url('Rbac/listorders')}" method="post" class="layui-form">
+                                    <php> $is_main=array("1"=>'是',"0"=>'否');</php>
+                                    <table class="layui-table">
+                                        <thead>
+                                        <tr>
+                                            <th width="40">ID</th>
+                                            <th>名称</th>
+                                            <th width="80">主导航</th>
+                                            <th>描述</th>
+                                            <th width="160">{:lang('ACTIONS')}</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <foreach name="navs" item="vo">
+                                            <tr>
+                                                <td>{$vo.id}</td>
+                                                <td>{$vo.name}</td>
+                                                <td>
+                                                    <empty name="vo.is_main">
+                                                        <span class="label label-default">
+                                                            {$is_main[$vo.is_main]}
+                                                        </span>
+                                                        <else/>
+                                                        <span class="label label-success">
+                                                            {$is_main[$vo.is_main]}
+                                                        </span>
+                                                    </empty>
+                                                </td>
+                                                <td>{$vo.remark}</td>
+                                                <td>
+                                                    <div class="layui-btn-group">
+                                                        <a class="layui-btn layui-btn-xs"
+                                                           href="javascript:openIframeLayer('{:url('NavMenu/index',array('nav_id'=>$vo['id']))}','{$vo.name}菜单管理',{});">菜单管理</a>
+                                                        <a class="layui-btn layui-btn-xs layui-btn-normal"
+                                                           href="{:url('nav/edit',array('id'=>$vo['id']))}">{:lang('EDIT')}</a>
+                                                        <a class="layui-btn layui-btn-xs layui-btn-danger js-ajax-delete"
+                                                           href="{:url('nav/delete',array('id'=>$vo['id']))}">{:lang('DELETE')}</a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </foreach>
+                                        </tbody>
+                                    </table>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="__STATIC__/okadmin/lib/layui/layui.js"></script>
+<script src="__TMPL__/public/all.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<include file="public@header"/>
+</head>
+<body>
+<div class="layui-fluid wrap">
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">文章标签</div>
+                <div class="layui-card-body">
+                    <div class="layui-tab">
+                        <ul class="layui-tab-title">
+                            <li class="layui-this"><a href="{:url('AdminTag/index')}">标签管理</a></li>
+                            <li><a href="{:url('AdminTag/add')}">添加标签</a></li>
+                        </ul>
+                        <div class="layui-tab-content">
+                            <form method="post" class="js-ajax-form layui-form">
+                                <div class="table-actions">
+                                    <!--<button type="submit" class="btn btn-primary btn-sm js-ajax-submit">{:lang('SORT')}</button>-->
+                                </div>
+                                <table class="layui-table">
+                                    <thead>
+                                    <tr>
+                                        <th width="50">ID</th>
+                                        <th>标签名称</th>
+                                        <th>状态</th>
+                                        <th width="160">操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <foreach name="tags" item="vo">
+                                        <tr>
+                                            <td>{$vo.id}</td>
+                                            <td>{$vo.name}</td>
+                                            <td>{$arrStatus[$vo['status']]}</td>
+                                            <td>
+                                                <div class="layui-btn-group">
+                                                    <if condition="$vo['status'] eq 1">
+                                                        <a class="layui-btn layui-btn-xs layui-btn-warm js-ajax-dialog-btn"
+                                                           href="{:url('AdminTag/upStatus',['id'=>$vo['id'],'status'=>0])}">禁用</a>
+                                                        <else/>
+                                                        <a class="layui-btn layui-btn-xs layui-btn-normal js-ajax-dialog-btn"
+                                                           href="{:url('AdminTag/upStatus',['id'=>$vo['id'] ,'status'=>1])}">启用</a>
+                                                    </if>
+                                                    <a class="layui-btn layui-btn-xs layui-btn-danger js-ajax-delete"
+                                                       href="{:url('AdminTag/delete',['id'=>$vo['id']])}">删除</a>
+                                                </div>
+
+                                            </td>
+                                        </tr>
+                                    </foreach>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <th width="50">ID</th>
+                                        <th>标签名称</th>
+                                        <th>状态</th>
+                                        <th width="160">操作</th>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                                <div class="table-actions">
+                                    <!--<button type="submit" class="btn btn-primary btn-sm js-ajax-submit">{:lang('SORT')}</button>-->
+                                </div>
+                            </form>
+                            <ul class="pagination">{$page|default=''}</ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="__STATIC__/js/admin.js"></script>
+</body>
+</html>

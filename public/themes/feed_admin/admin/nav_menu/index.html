@@ -1,0 +1,45 @@
+<include file="public@header"/>
+</head>
+<body>
+<div class="layui-fluid wrap js-check-wrap">
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-body">
+                    <div class="layui-tab">
+                        <ul class="layui-tab-title">
+                            <li class="layui-this"><a href="{:url('NavMenu/index',['nav_id'=>$nav_id])}">导航菜单</a></li>
+                            <li><a href="{:url('NavMenu/add',['nav_id'=>$nav_id])}">添加菜单</a></li>
+                        </ul>
+                        <div class="layui-tab-content">
+                            <form class="js-ajax-form layui-form" action="{:url('NavMenu/listOrder')}" method="post">
+                                <div class="table-actions">
+                                    <button class="layui-btn layui-btn-sm js-ajax-submit" type="submit">排序</button>
+                                </div>
+                                <table class="layui-table">
+                                    <thead>
+                                    <tr>
+                                        <th width="50">排序</th>
+                                        <th width="50">ID</th>
+                                        <th>菜单名称</th>
+                                        <th width="80">状态</th>
+                                        <th width="180">{:lang('ACTIONS')}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {$categories}
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="__STATIC__/okadmin/lib/layui/layui.js"></script>
+<script src="__TMPL__/public/all.js"></script>
+</body>
+</html>

@@ -1,0 +1,298 @@
+<include file="public@header"/>
+</head>
+<body>
+<div class="layui-fluid wrap js-check-wrap">
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">文章管理</div>
+                <div class="layui-card-body">
+                    <div class="layui-tab">
+                        <ul class="layui-tab-title">
+                            <li class="layui-this"><a href="javascript:;">所有文章</a></li>
+                            <li><a href="{:url('AdminArticle/add')}">添加文章</a></li>
+                        </ul>
+                        <div class="layui-tab-content">
+                            <form class="layui-form" method="post" action="{:url('AdminArticle/index')}" style="text-align: center;">
+                                    <div class="layui-form-item">
+                                        <div class="layui-inline">
+                                            <label class="layui-form-label">分类名称:</label>
+                                            <div class="layui-input-inline">
+                                                <select class="form-control" name="category" style="width: 140px;">
+                                                    <option value='0'>全部</option>
+                                                    {$category_tree|default=''}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="layui-inline">
+                                            <label class="layui-form-label">时间:</label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" name="start_time" value="" class="layui-input js-bootstrap-datetime" lay-key="1">
+                                            </div>
+                                            <div class="layui-form-mid">-</div>
+                                            <div class="layui-input-inline">
+                                                <input type="text" name="end_time" value="" class="layui-input js-bootstrap-datetime" lay-key="2">
+                                            </div>
+                                        </div>
+                                        <div class="layui-inline">
+                                            <label class="layui-form-label">关键字:</label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" class="layui-input" name="keyword" value="{$keyword|default=''}" placeholder="请输入关键字...">
+                                            </div>
+                                        </div>
+                                        <div class="layui-inline">
+                                            <input type="submit" class="layui-btn layui-btn-normal" value="搜索">
+                                            <a class="layui-btn layui-btn-danger" href="{:url('AdminArticle/index')}">清空</a>
+                                        </div>
+                                    </div>&nbsp;
+                            </form>
+                            <form class="layui-form js-ajax-form" action="" method="post">
+                                <div class="table-actions layui-btn-group">
+                                    <notempty name="category">
+                                        <button class="layui-btn layui-btn-sm js-ajax-submit" type="submit"
+                                                data-action="{:url('AdminArticle/listOrder')}">{:lang('SORT')}
+                                        </button>
+                                    </notempty>
+                                    <button class="layui-btn layui-btn-sm js-ajax-submit" type="submit"
+                                            data-action="{:url('AdminArticle/publish',array('yes'=>1))}" data-subcheck="true">发布
+                                    </button>
+                                    <button class="layui-btn layui-btn-sm js-ajax-submit" type="submit"
+                                            data-action="{:url('AdminArticle/publish',array('no'=>1))}" data-subcheck="true">取消发布
+                                    </button>
+                                    <button class="layui-btn layui-btn-sm js-ajax-submit" type="submit"
+                                            data-action="{:url('AdminArticle/top',array('yes'=>1))}" data-subcheck="true">置顶
+                                    </button>
+                                    <button class="layui-btn layui-btn-sm js-ajax-submit" type="submit"
+                                            data-action="{:url('AdminArticle/top',array('no'=>1))}" data-subcheck="true">取消置顶
+                                    </button>
+                                    <button class="layui-btn layui-btn-sm js-ajax-submit" type="submit"
+                                            data-action="{:url('AdminArticle/recommend',array('yes'=>1))}" data-subcheck="true">推荐
+                                    </button>
+                                    <button class="layui-btn layui-btn-sm js-ajax-submit" type="submit"
+                                            data-action="{:url('AdminArticle/recommend',array('no'=>1))}" data-subcheck="true">取消推荐
+                                    </button>
+                                    <button class="layui-btn layui-btn-danger layui-btn-sm js-ajax-submit" type="submit"
+                                            data-action="{:url('AdminArticle/delete')}" data-subcheck="true" data-msg="您确定删除吗？">
+                                        {:lang('DELETE')}
+                                    </button>
+                                </div>
+                                <table class="layui-table">
+                                    <thead>
+                                    <tr>
+                                        <th width="15">
+                                            <input type="checkbox" lay-skin="primary" lay-filter="js-check-all" class="js-check-all">
+                                        </th>
+                                        <notempty name="category">
+                                            <th width="50">{:lang('SORT')}</th>
+                                        </notempty>
+                                        <th width="50">ID</th>
+                                        <th>标题</th>
+                                        <th>分类</th>
+                                        <th width="50">作者</th>
+                                        <th width="65">点击量</th>
+                                        <th width="65">评论量</th>
+                                        <th width="160">关键字/来源/摘要/缩略图</th>
+                                        <th width="160">更新时间</th>
+                                        <th width="160">发布时间</th>
+                                        <th width="70">状态</th>
+                                        <th width="95">操作</th>
+                                    </tr>
+                                    </thead>
+                                    <foreach name="articles" item="vo">
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" class="js-check" lay-skin="primary" name="ids[]"
+                                                       value="{$vo.id}">
+                                            </td>
+                                            <notempty name="category">
+                                                <td>
+                                                    <input name="list_orders[{$vo.post_category_id}]" class="input-order" type="text"
+                                                           value="{$vo.list_order}">
+                                                </td>
+                                            </notempty>
+                                            <td><b>{$vo.id}</b></td>
+                                            <td>
+                                                <notempty name="category">
+                                                    <a href="{:cmf_url('portal/Article/index',array('id'=>$vo['id'],'cid'=>$vo['category_id']))}"
+                                                       target="_blank">{$vo.post_title}</a>
+                                                    <else/>
+                                                    <a href="{:cmf_url('portal/Article/index',array('id'=>$vo['id']))}"
+                                                       target="_blank">{$vo.post_title}</a>
+                                                </notempty>
+                                            </td>
+                                            <td>
+                                                <foreach name="vo.categories" item="voo">
+                                                    <a class="label label-default"
+                                                       href="{:cmf_url('portal/List/index',array('id'=>$voo['id']))}"
+                                                       target="_blank"
+                                                    >{$voo.name}</a>
+                                                </foreach>
+                                            </td>
+                                            <td>{$vo.user_nickname}</td>
+                                            <td>{$vo.post_hits|default=0}</td>
+                                            <td>
+                                                <notempty name="vo.comment_count">
+                                                    {$vo.comment_count|default='0'}
+                                                    <!--<a href="javascript:parent.openIframeDialog('{:url('comment/commentadmin/index',array('post_id'=>$vo['id']))}','评论列表')">{$vo.comment_count}</a>-->
+                                                    <else/>
+                                                    {$vo.comment_count|default='0'}
+                                                </notempty>
+                                            </td>
+                                            <td>
+                                                <notempty name="vo.post_keywords">
+                                                    <i class="icon ok-icon ok-icon-check"></i>
+                                                    <else/>
+                                                    <i class="icon ok-icon ok-icon-close"></i>
+                                                </notempty>
+                                                <notempty name="vo.post_source">
+                                                    <i class="icon ok-icon ok-icon-check"></i>
+                                                    <else/>
+                                                    <i class="icon ok-icon ok-icon-close"></i>
+                                                </notempty>
+                                                <notempty name="vo.post_excerpt">
+                                                    <i class="icon ok-icon ok-icon-check"></i>
+                                                    <else/>
+                                                    <i class="icon ok-icon ok-icon-close"></i>
+                                                </notempty>
+
+                                                <notempty name="vo.more.thumbnail">
+                                                    <a href="javascript:imagePreviewDialog('{:cmf_get_image_preview_url($vo.more.thumbnail)}');">
+                                                        <i class="icon ok-icon ok-icon-pic"></i>
+                                                    </a>
+                                                    <else/>
+                                                    <i class="icon ok-icon ok-icon-close"></i>
+                                                </notempty>
+                                            </td>
+                                            <td>
+                                                <notempty name="vo.update_time">
+                                                    {:date('Y-m-d H:i',$vo['update_time'])}
+                                                </notempty>
+
+                                            </td>
+                                            <td>
+                                                <empty name="vo.published_time">
+                                                    未发布
+                                                    <else/>
+                                                    {:date('Y-m-d H:i',$vo['published_time'])}
+                                                </empty>
+
+                                            </td>
+                                            <td>
+                                                <notempty name="vo.post_status">
+                                                    <a title="已发布"><i class="icon ok-icon ok-icon-check"></i></a>
+                                                <else/>
+                                                    <a title="未发布"><i class="icon ok-icon ok-icon-close"></i></a>
+                                                </notempty>
+                                                <notempty name="vo.is_top">
+                                                    <a title="已置顶"><i class="icon ok-icon ok-icon-arrow-up"></i></a>
+                                                <else/>
+                                                    <a title="未置顶"><i class="icon ok-icon ok-icon-arrow-down"></i></a>
+                                                </notempty>
+                                                <notempty name="vo.recommended">
+                                                    <a title="已推荐"><i class="icon ok-icon ok-icon-thumbs-up"></i></a>
+                                                    <else/>
+                                                    <a title="未推荐"><i class="icon ok-icon ok-icon-thumbs-down"></i></a>
+                                                </notempty>
+                                            </td>
+                                            <td>
+                                                <div class="layui-btn-group">
+                                                    <a class="layui-btn layui-btn-xs" href="{:url('AdminArticle/edit',array('id'=>$vo['id']))}">{:lang('EDIT')}</a>
+                                                    <a class="layui-btn layui-btn-xs layui-btn-danger js-ajax-delete"
+                                                       href="{:url('AdminArticle/delete',array('id'=>$vo['id']))}">{:lang('DELETE')}</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </foreach>
+                                    <tfoot>
+                                    <tr>
+                                        <th width="15"><label><input type="checkbox" lay-skin="primary" lay-filter="js-check-all" class="js-check-all" data-direction="x"
+                                                                     data-checklist="js-check-x"></label></th>
+                                        <notempty name="category">
+                                            <th width="50">{:lang('SORT')}</th>
+                                        </notempty>
+                                        <th width="50">ID</th>
+                                        <th>标题</th>
+                                        <th>分类</th>
+                                        <th width="50">作者</th>
+                                        <th width="65">点击量</th>
+                                        <th width="65">评论量</th>
+                                        <th width="160">关键字/来源/摘要/缩略图</th>
+                                        <th width="160">更新时间</th>
+                                        <th width="160">发布时间</th>
+                                        <th width="70">状态</th>
+                                        <th width="90">操作</th>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                                <div class="layui-btn-group">
+                                    <notempty name="category">
+                                        <button class="layui-btn layui-btn-sm js-ajax-submit" type="submit"
+                                                data-action="{:url('AdminArticle/listOrder')}">{:lang('SORT')}
+                                        </button>
+                                    </notempty>
+                                    <button class="layui-btn layui-btn-sm js-ajax-submit" type="submit"
+                                            data-action="{:url('AdminArticle/publish',array('yes'=>1))}" data-subcheck="true">发布
+                                    </button>
+                                    <button class="layui-btn layui-btn-sm js-ajax-submit" type="submit"
+                                            data-action="{:url('AdminArticle/publish',array('no'=>1))}" data-subcheck="true">取消发布
+                                    </button>
+                                    <button class="layui-btn layui-btn-sm js-ajax-submit" type="submit"
+                                            data-action="{:url('AdminArticle/top',array('yes'=>1))}" data-subcheck="true">置顶
+                                    </button>
+                                    <button class="layui-btn layui-btn-sm js-ajax-submit" type="submit"
+                                            data-action="{:url('AdminArticle/top',array('no'=>1))}" data-subcheck="true">取消置顶
+                                    </button>
+                                    <button class="layui-btn layui-btn-sm js-ajax-submit" type="submit"
+                                            data-action="{:url('AdminArticle/recommend',array('yes'=>1))}" data-subcheck="true">推荐
+                                    </button>
+                                    <button class="layui-btn layui-btn-sm js-ajax-submit" type="submit"
+                                            data-action="{:url('AdminArticle/recommend',array('no'=>1))}" data-subcheck="true">取消推荐
+                                    </button>
+                                    <!--
+                                    <notempty name="category">
+                                        <button class="btn btn-primary btn-sm js-articles-move" type="button">批量移动</button>
+                                    </notempty>
+                                    <button class="btn btn-primary btn-sm js-articles-copy" type="button">批量复制</button>
+                                    -->
+                                    <button class="layui-btn layui-btn-danger layui-btn-sm js-ajax-submit" type="submit"
+                                            data-action="{:url('AdminArticle/delete')}" data-subcheck="true" data-msg="您确定删除吗？">
+                                        {:lang('DELETE')}
+                                    </button>
+                                </div>
+                                <ul class="pagination">{$page|default=''}</ul>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="__STATIC__/okadmin/lib/layui/layui.all.js"></script>
+<script src="/themes/feed_admin/public/all.js"></script>
+<script>
+    layui.use(['form', 'laydate'], function () {
+        var form = layui.form,
+            laydate = layui.laydate;
+
+        laydate.render({
+            elem: '#start_date'
+        });
+
+        laydate.render({
+            elem: '#end_date'
+        });
+
+        form.on('checkbox(js-check-all)', function (data) {
+            var _checked = data.elem.checked;
+            var flag = false;
+            if (_checked) flag = _checked;
+            $('input[type="checkbox"]').each(function (index, item) {
+                $(this).prop('checked', flag);
+            });
+            form.render('checkbox');
+        });
+    });
+</script>
+</body>
+</html>

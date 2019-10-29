@@ -1,0 +1,71 @@
+<include file="public@header" />
+</head>
+<body>
+	<div class="layui-fluid wrap">
+		<div class="layui-row">
+			<div class="layui-col-md12">
+				<div class="layui-card">
+					<div class="layui-card-header"></div>
+					<div class="layui-card-body">
+						<div class="layui-tab">
+							<ul class="layui-tab-title">
+								<li><a href="{:url('user/index')}">{:lang('ADMIN_USER_INDEX')}</a></li>
+								<li class="layui-this"><a href="{:url('user/add')}">{:lang('ADMIN_USER_ADD')}</a></li>
+							</ul>
+							<div class="layui-tab-content">
+								<form method="post" class="layui-form js-ajax-form" action="{:url('user/addpost')}">
+									<div class="layui-form-item">
+										<label for="input-user_login" class="layui-form-label"><span class="form-required">*</span>{:lang('USERNAME')}</label>
+										<div class="layui-input-block">
+											<input type="text" class="layui-input" id="input-user_login" name="user_login">
+										</div>
+									</div>
+									<div class="layui-form-item">
+										<label for="input-user_pass" class="layui-form-label"><span class="form-required">*</span>{:lang('PASSWORD')}</label>
+										<div class="layui-input-block">
+											<input type="text" class="layui-input" id="input-user_pass" name="user_pass" placeholder="******">
+										</div>
+									</div>
+									<div class="layui-form-item">
+										<label for="input-user_email" class="layui-form-label"><span class="form-required">*</span>{:lang('EMAIL')}</label>
+										<div class="layui-input-block">
+											<input type="text" class="layui-input" id="input-user_email" name="user_email">
+										</div>
+									</div>
+									<div class="layui-form-item">
+										<label for="input-user_email" class="layui-form-label"><span class="form-required">*</span>{:lang('ROLE')}</label>
+										<div class="layui-input-block">
+											<foreach name="roles" item="vo">
+												<label class="checkbox-inline">
+													<input value="{$vo.id}" type="checkbox" name="role_id[]" title="{$vo.name}" <if condition="cmf_get_current_admin_id() neq 1 && $vo['id'] eq 1">disabled="true"</if>>
+												</label>
+											</foreach>
+										</div>
+									</div>
+									<div class="layui-form-item">
+										<div class="layui-input-block">
+											<button type="submit" class="layui-btn js-ajax-submit">{:lang('ADD')}</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="__STATIC__/js/admin.js"></script>
+	<script src="__STATIC__/okadmin/lib/layui/layui.all.js"></script>
+	<script>
+		layui.use(['form', 'laydate'], function () {
+			var form = layui.form,
+					laydate = layui.laydate;
+
+			laydate.render({
+				elem: '#input-birthday'
+			});
+		});
+	</script>
+</body>
+</html>

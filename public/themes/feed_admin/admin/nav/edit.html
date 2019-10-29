@@ -1,0 +1,55 @@
+<include file="public@header"/>
+</head>
+<body>
+<div class="layui-fluid wrap">
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">导航管理</div>
+                <div class="layui-card-body">
+                    <div class="layui-tab">
+                        <ul class="layui-tab-title">
+                            <li><a href="{:url('nav/index')}">{:lang('ADMIN_NAV_INDEX')}</a></li>
+                            <li><a href="{:url('nav/add')}">{:lang('ADMIN_NAV_ADD')}</a></li>
+                            <li class="layui-this" ><a>{:lang('ADMIN_NAV_EDIT')}</a></li>
+                        </ul>
+                        <div class="layui-tab-content">
+                            <form method="post" class="layui-form js-ajax-form" action="{:url('nav/editPost')}">
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label"><span class="form-required">*</span>名称:</label>
+                                    <div class="layui-input-block">
+                                        <input type="hidden" name="id" value="{$id}">
+                                        <input type="text" class="layui-input" name="name" value="{$name}">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">备注:</label>
+                                    <div class="layui-input-block">
+                                        <textarea class="layui-textarea" name="remark" >{$remark}</textarea>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">主菜单:</label>
+                                    <div class="layui-input-block">
+                                        <php>$strMainMenuChecked=$is_main?"checked":"";</php>
+                                        <input  type="checkbox" lay-skin="primary" name="is_main" value="1" {$strMainMenuChecked} >
+                                    </div>
+                                </div>
+
+                                <div class="layui-input-block">
+                                    <button type="submit" class="layui-btn  js-ajax-submit">{:lang("SAVE")}</button>
+                                    <a class="layui-btn layui-btn-primary" href="{:url('Nav/index')}">返回</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="__STATIC__/okadmin/lib/layui/layui.js"></script>
+<script src="__TMPL__/public/all.js"></script>
+</body>
+</html>

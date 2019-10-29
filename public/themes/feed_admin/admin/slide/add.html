@@ -1,0 +1,47 @@
+<include file="public@header"/>
+</head>
+<body>
+<div class="layui-fluid wrap">
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">幻灯片管理</div>
+                <div class="layui-card-body">
+                    <div class="layui-tab">
+                        <ul class="layui-tab-title">
+                            <li><a href="{:url('slide/index')}">幻灯片列表</a></li>
+                            <li class="layui-this"><a href="{:url('slide/add')}">添加幻灯片</a></li>
+                        </ul>
+                        <div class="layui-tab-content">
+                            <form method="post" class="layui-form js-ajax-form" action="{:url('slide/addPost')}">
+                                <div class="layui-form-item">
+                                    <label for="input-name" class="layui-form-label">名称<span class="form-required">*</span></label>
+                                    <div class="layui-input-block">
+                                        <input type="text" class="layui-input" id="input-name" name="name">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label for="input-remark" class="layui-form-label">{:lang('DESCRIPTION')}</label>
+                                    <div class="layui-input-block">
+                                        <textarea class="layui-textarea" id="input-remark" name="remark"></textarea>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <button type="submit" class="layui-btn js-ajax-submit">{:lang('ADD')}</button>
+                                        <a class="layui-btn layui-btn-primary" href="{:url('slide/index')}">{:lang('BACK')}</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="__STATIC__/okadmin/lib/layui/layui.js"></script>
+<script src="__TMPL__/public/all.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<include file="public@header"/>
+</head>
+<body>
+<div class="layui-fluid wrap js-check-wrap">
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">角色管理</div>
+                <div class="layui-card-body">
+                    <div class="layui-tab">
+                        <ul class="layui-tab-title">
+                            <li><a href="{:url('rbac/index')}">{:lang('ADMIN_RBAC_INDEX')}</a></li>
+                            <li class="layui-this"><a href="{:url('rbac/roleAdd')}">{:lang('ADMIN_RBAC_ROLEADD')}</a></li>
+                        </ul>
+                        <div class="layui-tab-content">
+                            <form class="layui-form js-ajax-form" action="{:url('rbac/roleAddPost')}" method="post">
+                                <div class="layui-form-item">
+                                    <label for="input-name" class="layui-form-label"><span class="form-required">*</span>{:lang('ROLE_NAME')}</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" class="layui-input" id="input-name" name="name">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label for="input-remark" class="layui-form-label">{:lang('ROLE_DESCRIPTION')}</label>
+                                    <div class="layui-input-block">
+                                        <textarea type="text" class="layui-input" id="input-remark" name="remark"></textarea>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">{:lang('STATUS')}</label>
+                                    <div class="layui-input-block">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="status" value="1" title="{:lang('ENABLED')}">
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="status" value="0" title="{:lang('DISABLED')}">
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <button type="submit" class="layui-btn js-ajax-submit">{:lang('ADD')}</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="__STATIC__/js/admin.js"></script>
+<script src="__STATIC__/okadmin/lib/layui/layui.all.js"></script>
+<script>
+    layui.use(['form', 'laydate'], function () {
+        var form = layui.form,
+            laydate = layui.laydate;
+
+        laydate.render({
+            elem: '#input-birthday'
+        });
+    });
+</script>
+</body>
+</html>
