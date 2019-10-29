@@ -1,55 +1,79 @@
-<include file="public@header" />
+<include file="public@header"/>
 </head>
 <body>
-	<div class="wrap">
-		<ul class="nav nav-tabs">
-			<li><a href="{:url('link/index')}">{:lang('ADMIN_LINK_INDEX')}</a></li>
-			<li class="active"><a href="{:url('link/add')}">{:lang('ADMIN_LINK_ADD')}</a></li>
-		</ul>
-		<form method="post" class="form-horizontal js-ajax-form margin-top-20" action="{:url('link/addPost')}">
-			<div class="form-group">
-				<label for="input-name" class="col-sm-2 control-label">名称<span class="form-required">*</span></label>
-				<div class="col-md-6 col-sm-10">
-					<input type="text" class="form-control" id="input-name" name="name">
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="input-url" class="col-sm-2 control-label">链接地址<span class="form-required">*</span></label>
-				<div class="col-md-6 col-sm-10">
-					<input type="text" class="form-control" id="input-url" name="url">
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="input-image" class="col-sm-2 control-label">图标</label>
-				<div class="col-md-6 col-sm-10">
-					<input type="text" class="form-control" id="input-image" name="image"> 
-					<a href="javascript:uploadOneImage('图片上传','#input-image');">上传图片</a>
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="input-target" class="col-sm-2 control-label">打开方式</label>
-				<div class="col-md-6 col-sm-10">
-					<select class="form-control" name="target" id="input-target">
-						<foreach name="targets" item="vo">
-						<option value="{$key}">{$vo}</option>
-						</foreach>
-					</select>
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="input-description" class="col-sm-2 control-label">描述</label>
-				<div class="col-md-6 col-sm-10">
-					<textarea class="form-control" name="description" id="input-description" ></textarea>
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-primary js-ajax-submit">{:lang('ADD')}</button>
-					<a class="btn btn-default" href="javascript:history.back(-1);">{:lang('BACK')}</a>
-				</div>
-			</div>
-		</form>
-	</div>
-	<script src="__STATIC__/js/admin.js"></script>
+<div class="layui-fluid wrap">
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">友情链接</div>
+                <div class="layui-card-body">
+                    <div class="layui-tab">
+                        <ul class="layui-tab-title">
+                            <li><a href="{:url('link/index')}">{:lang('ADMIN_LINK_INDEX')}</a></li>
+                            <li class="layui-this"><a href="{:url('link/add')}">{:lang('ADMIN_LINK_ADD')}</a></li>
+                        </ul>
+                        <div class="layui-tab-content">
+                            <form method="post" class="layui-form js-ajax-form" action="{:url('link/addPost')}">
+                                <div class="layui-form-item">
+                                    <label for="input-name" class="layui-form-label">名称<span
+                                            class="form-required">*</span></label>
+                                    <div class="layui-input-block">
+                                        <input type="text" class="layui-input" id="input-name" name="name">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label for="input-url" class="layui-form-label">链接地址<span
+                                            class="form-required">*</span></label>
+                                    <div class="layui-input-block">
+                                        <input type="text" class="layui-input" id="input-url" name="url">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label for="input-image" class="layui-form-label">图标</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" class="layui-input" id="input-image" name="image">
+                                        <a href="javascript:uploadOneImage('图片上传','#input-image');">上传图片</a>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label for="input-target" class="layui-form-label">打开方式</label>
+                                    <div class="layui-input-block">
+                                        <select class="layui-select" name="target" id="input-target">
+                                            <foreach name="targets" item="vo">
+                                                <option value="{$key}">{$vo}</option>
+                                            </foreach>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label for="input-description" class="layui-form-label">描述</label>
+                                    <div class="layui-input-block">
+                                        <textarea class="layui-textarea" name="description"
+                                                  id="input-description"></textarea>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <button type="submit" class="layui-btn js-ajax-submit">{:lang('ADD')}
+                                        </button>
+                                        <a class="layui-btn layui-btn-primary"
+                                           href="javascript:history.back(-1);">{:lang('BACK')}</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="__STATIC__/okadmin/lib/layui/layui.js"></script>
+<script src="__TMPL__/public/all.js"></script>
+<script>
+    layui.use(['form'], function () {
+        var form = layui.form;
+    });
+</script>
 </body>
 </html>
