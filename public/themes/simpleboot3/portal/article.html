@@ -12,9 +12,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <meta name="renderer" content="webkit">
-    <title>奥睿科ORICO HU3温室加湿器 - 我的CMS网站</title>
+    <title>ADtalking</title>
     <meta name="keywords" content=""/>
-    <meta name="description" content="加湿器可以说是目前家里比较常见的生活用品之一了，特别是爱美的女性朋友们，为了能保持容颜润泽，经常会在身旁备用一台。其实对于更多的用户来说，加湿器的主要作用还是放在空调房里，用来调节房间湿度"/>
+    <meta name="description" content="ADtalking"/>
 
     <link rel="stylesheet" media="screen" href="__STATIC__/informanction/css/bootstrap.min.css"/>
     <link rel="stylesheet" media="screen" href="__STATIC__/informanction/css/font-awesome.min.css"/>
@@ -48,97 +48,35 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/cms/"><img src="__STATIC__/informanction/picture/logo.png" width="180" alt=""></a>
+                <a class="navbar-brand" href="/">
+                    <empty name="$site_info.site_logo">
+                        请在后台上传LOGO
+                        <else/>
+                        <img src="{:cmf_get_image_url($site_info.site_logo)}" width="150" alt="">
+                    </empty>
+                </a>
             </div>
 
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <!--如果你需要自定义NAV,可使用channellist标签来完成,这里只设置了2级,如果显示无限级,请使用cms:nav标签-->
-                    <!--判断是否有子级或高亮当前栏目-->
-                    <li class="">
-                        <a href="/cms/" >首页</a>
-                        <ul class="dropdown-menu" role="menu">
-                        </ul>
-                    </li>
-                    <!--判断是否有子级或高亮当前栏目-->
-                    <li class="dropdown">
-                        <a href="/cms/c/news.html"  data-toggle="dropdown" >新闻中心 <b class="caret"></b></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="/cms/c/hardware.html">硬件</a></li>
-                            <li><a href="/cms/c/internet.html">互联网</a></li>
-                            <li><a href="/cms/c/investment.html">投资</a></li>
-                            <li><a href="/cms/c/security.html">安全</a></li>
-                        </ul>
-                    </li>
-                    <!--判断是否有子级或高亮当前栏目-->
-                    <li class="dropdown active">
-                        <a href="/cms/c/product.html"  data-toggle="dropdown" >产品中心 <b class="caret"></b></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="/cms/c/wearable.html">智能设备</a></li>
-                            <li><a href="/cms/c/smarthome.html">智能家居</a></li>
-                            <li><a href="/cms/c/mobiledevice.html">移动设备</a></li>
-                        </ul>
-                    </li>
-                    <!--判断是否有子级或高亮当前栏目-->
-                    <li class="dropdown">
-                        <a href="/cms/c/download.html"  data-toggle="dropdown" >下载中心 <b class="caret"></b></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="/cms/c/app.html">应用软件</a></li>
-                            <li><a href="/cms/c/network.html">网络工具</a></li>
-                            <li><a href="/cms/c/media.html">媒体工具</a></li>
-                        </ul>
-                    </li>
-                    <!--判断是否有子级或高亮当前栏目-->
-                    <li class="">
-                        <a href="/cms/d/message.html" >自定义表单</a>
-                        <ul class="dropdown-menu" role="menu">
-                        </ul>
-                    </li>
-                    <!--判断是否有子级或高亮当前栏目-->
-                    <li class="">
-                        <a href="/cms/p/aboutus" >单页</a>
-                        <ul class="dropdown-menu" role="menu">
-                        </ul>
-                    </li>
-                    <!--判断是否有子级或高亮当前栏目-->
-                    <li class="">
-                        <a href="/cms/special/it" >专题</a>
-                        <ul class="dropdown-menu" role="menu">
-                        </ul>
-                    </li>
-                    <!--判断是否有子级或高亮当前栏目-->
-                    <li class="dropdown">
-                        <a href="javascript:"  data-toggle="dropdown" >更多 <b class="caret"></b></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="https://www.fastadmin.net">官网</a></li>
-                            <li><a href="https://www.fastadmin.net/store.html">插件市场</a></li>
-                            <li><a href="https://ask.fastadmin.net">社区</a></li>
-                            <li><a href="https://doc.fastadmin.net">文档</a></li>
-                        </ul>
-                    </li>
+                    <navigation nav-id="1" root="">
+                        <navigationMenu root="li" class="dropdown">
+                            <a href="{$menu.href|default=''}"
+                               target="{$menu.target|default=''}">{$menu.name|default=''}</a>
+                        </navigationMenu>
+                        <navigationFolder root="li" dropdown="ul"
+                                          dropdown-class="dropdown-menu" role="menu">
+                            <a href="#" data-toggle="dropdown">
+                                {$menu.name|default=''} <b class="caret"></b>
+                            </a>
+                        </navigationFolder>
+                    </navigation>
                 </ul>
                 <ul class="nav navbar-right hidden">
                     <ul class="nav navbar-nav">
                         <li><a href="javascript:;" class="addbookbark"><i class="fa fa-star"></i> 加入收藏</a></li>
                         <li><a href="javascript:;" class=""><i class="fa fa-phone"></i> 联系我们</a></li>
                     </ul>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <form class="form-inline navbar-form" action="/cms/s.html" method="get">
-                            <div class="form-search hidden-sm hidden-md">
-                                <input class="form-control typeahead" name="search" data-typeahead-url="/addons/cms/search/typeahead.html" type="text" id="searchinput" placeholder="搜索">
-                            </div>
-                        </form>
-                    </li>
-                    <li class="dropdown">
-                        <a href="/index/user/index.html" class="dropdown-toggle" data-toggle="dropdown">会员<span class="hidden-sm">中心</span> <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/index/user/login.html"><i class="fa fa-sign-in fa-fw"></i>登录</a></li>
-                            <li><a href="/index/user/register.html"><i class="fa fa-user-o fa-fw"></i>注册</a></li>
-
-                        </ul>
-                    </li>
                 </ul>
             </div>
 
