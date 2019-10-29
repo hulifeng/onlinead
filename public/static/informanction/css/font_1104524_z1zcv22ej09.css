@@ -1,0 +1,65 @@
+@font-face {font-family: "iconfont";
+  src: url('../fonts/font_1104524_z1zcv22ej09.eot'); /* IE9 */
+  src: url('../fonts/font_1104524_z1zcv22ej09.eot') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/7999b0f4ba6d45f99bac35b36d87930c.woff') format('woff2'),
+  url('../fonts/font_1104524_z1zcv22ej09.woff') format('woff'),
+  url('../fonts/font_1104524_z1zcv22ej09.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('../fonts/font_1104524_z1zcv22ej09.svg') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-pengyouquan:before {
+  content: "\e639";
+}
+
+.icon-weibo:before {
+  content: "\e63a";
+}
+
+.icon-weixin:before {
+  content: "\e63b";
+}
+
+.icon-heart:before {
+  content: "\e63e";
+}
+
+.icon-pencil:before {
+  content: "\e63f";
+}
+
+.icon-comment-o:before {
+  content: "\e655";
+}
+
+.icon-backtotop:before {
+  content: "\e669";
+}
+
+.icon-feedback:before {
+  content: "\e66b";
+}
+
+.icon-qrcode:before {
+  content: "\e65e";
+}
+
+.icon-shouji:before {
+  content: "\e661";
+}
+
+.icon-ellipsis-h:before {
+  content: "\e66f";
+}
+
+.icon-wxapp:before {
+  content: "\e603";
+}
+

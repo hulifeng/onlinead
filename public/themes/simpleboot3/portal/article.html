@@ -1,136 +1,566 @@
 <!DOCTYPE html>
-<html>
+<!--[if lt IE 7]>
+<html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class=""> <!--<![endif]-->
 <head>
-    <title>{$article.post_title}</title>
-    <meta name="keywords" content="{$site_info.site_seo_keywords|default=''}"/>
-    <meta name="description" content="{$site_info.site_seo_description|default=''}">
-    <include file="public@head"/>
-    <style>
-        #article_content img {
-            height: auto !important;
-            max-width: 100%;
-        }
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <title>奥睿科ORICO HU3温室加湿器 - 我的CMS网站</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content="加湿器可以说是目前家里比较常见的生活用品之一了，特别是爱美的女性朋友们，为了能保持容颜润泽，经常会在身旁备用一台。其实对于更多的用户来说，加湿器的主要作用还是放在空调房里，用来调节房间湿度"/>
 
-        #article_content {
-            word-wrap: break-word;
-        }
-    </style>
-    <hook name="before_head_end"/>
+    <link rel="stylesheet" media="screen" href="__STATIC__/informanction/css/bootstrap.min.css"/>
+    <link rel="stylesheet" media="screen" href="__STATIC__/informanction/css/font-awesome.min.css"/>
+    <link rel="stylesheet" media="screen" href="__STATIC__/informanction/css/layer.css"/>
+    <link rel="stylesheet" media="screen" href="__STATIC__/informanction/css/swiper.min.css">
+    <link rel="stylesheet" media="screen" href="__STATIC__/informanction/css/common.css"/>
+
+    <link rel="stylesheet" href="__STATIC__/informanction/css/font_1104524_z1zcv22ej09.css">
+
+
+
+    <!--[if lt IE 9]>
+    <script src="__STATIC__/informanction/js/html5shiv.js"></script>
+    <script src="__STATIC__/informanction/js/respond.min.js"></script>
+    <![endif]-->
+
 </head>
-<body class="body-white">
-<include file="public@nav"/>
-<div class="container tc-main">
+<body class="group-page">
+
+<taglib name="app\portal\taglib\Portal"/>
+
+<header class="header">
+    <!-- S 导航 -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/cms/"><img src="__STATIC__/informanction/picture/logo.png" width="180" alt=""></a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <!--如果你需要自定义NAV,可使用channellist标签来完成,这里只设置了2级,如果显示无限级,请使用cms:nav标签-->
+                    <!--判断是否有子级或高亮当前栏目-->
+                    <li class="">
+                        <a href="/cms/" >首页</a>
+                        <ul class="dropdown-menu" role="menu">
+                        </ul>
+                    </li>
+                    <!--判断是否有子级或高亮当前栏目-->
+                    <li class="dropdown">
+                        <a href="/cms/c/news.html"  data-toggle="dropdown" >新闻中心 <b class="caret"></b></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/cms/c/hardware.html">硬件</a></li>
+                            <li><a href="/cms/c/internet.html">互联网</a></li>
+                            <li><a href="/cms/c/investment.html">投资</a></li>
+                            <li><a href="/cms/c/security.html">安全</a></li>
+                        </ul>
+                    </li>
+                    <!--判断是否有子级或高亮当前栏目-->
+                    <li class="dropdown active">
+                        <a href="/cms/c/product.html"  data-toggle="dropdown" >产品中心 <b class="caret"></b></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/cms/c/wearable.html">智能设备</a></li>
+                            <li><a href="/cms/c/smarthome.html">智能家居</a></li>
+                            <li><a href="/cms/c/mobiledevice.html">移动设备</a></li>
+                        </ul>
+                    </li>
+                    <!--判断是否有子级或高亮当前栏目-->
+                    <li class="dropdown">
+                        <a href="/cms/c/download.html"  data-toggle="dropdown" >下载中心 <b class="caret"></b></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/cms/c/app.html">应用软件</a></li>
+                            <li><a href="/cms/c/network.html">网络工具</a></li>
+                            <li><a href="/cms/c/media.html">媒体工具</a></li>
+                        </ul>
+                    </li>
+                    <!--判断是否有子级或高亮当前栏目-->
+                    <li class="">
+                        <a href="/cms/d/message.html" >自定义表单</a>
+                        <ul class="dropdown-menu" role="menu">
+                        </ul>
+                    </li>
+                    <!--判断是否有子级或高亮当前栏目-->
+                    <li class="">
+                        <a href="/cms/p/aboutus" >单页</a>
+                        <ul class="dropdown-menu" role="menu">
+                        </ul>
+                    </li>
+                    <!--判断是否有子级或高亮当前栏目-->
+                    <li class="">
+                        <a href="/cms/special/it" >专题</a>
+                        <ul class="dropdown-menu" role="menu">
+                        </ul>
+                    </li>
+                    <!--判断是否有子级或高亮当前栏目-->
+                    <li class="dropdown">
+                        <a href="javascript:"  data-toggle="dropdown" >更多 <b class="caret"></b></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="https://www.fastadmin.net">官网</a></li>
+                            <li><a href="https://www.fastadmin.net/store.html">插件市场</a></li>
+                            <li><a href="https://ask.fastadmin.net">社区</a></li>
+                            <li><a href="https://doc.fastadmin.net">文档</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-right hidden">
+                    <ul class="nav navbar-nav">
+                        <li><a href="javascript:;" class="addbookbark"><i class="fa fa-star"></i> 加入收藏</a></li>
+                        <li><a href="javascript:;" class=""><i class="fa fa-phone"></i> 联系我们</a></li>
+                    </ul>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <form class="form-inline navbar-form" action="/cms/s.html" method="get">
+                            <div class="form-search hidden-sm hidden-md">
+                                <input class="form-control typeahead" name="search" data-typeahead-url="/addons/cms/search/typeahead.html" type="text" id="searchinput" placeholder="搜索">
+                            </div>
+                        </form>
+                    </li>
+                    <li class="dropdown">
+                        <a href="/index/user/index.html" class="dropdown-toggle" data-toggle="dropdown">会员<span class="hidden-sm">中心</span> <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/index/user/login.html"><i class="fa fa-sign-in fa-fw"></i>登录</a></li>
+                            <li><a href="/index/user/register.html"><i class="fa fa-user-o fa-fw"></i>注册</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+    <!-- E 导航 -->
+
+</header>
+
+
+
+<style>
+    .swiper-container {
+        width: 100%;
+        height: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .swiper-slide {
+        background-size: cover;
+        background-position: center;
+    }
+
+    .gallery-top {
+        height: 80%;
+        width: 100%;
+    }
+
+    .gallery-thumbs {
+        height: 20%;
+        box-sizing: border-box;
+        padding: 10px 0;
+    }
+
+    .gallery-thumbs .swiper-slide {
+        width: 25%;
+        height: 100%;
+        opacity: 0.4;
+    }
+    .gallery-thumbs .swiper-slide-thumb-active {
+        opacity: 1;
+    }
+
+    .article-image {
+        height: 820px;
+    }
+
+    @media (max-width: 767px) {
+
+        .article-image {
+            height: 400px;
+        }
+    }
+
+</style>
+
+<div class="container" id="content-container">
+
     <div class="row">
-        <div class="col-md-9">
-            <div class="tc-box article-box">
-                <h2>{$article.post_title}</h2>
-                <div class="article-infobox">
-                    <span>{:date('Y-m-d H:i',$article.published_time)} by {$article.user.user_nickname}</span>
-                    <span>
-		    			<a href="javascript:;"><i class="fa fa-eye"></i><span>{$article.post_hits}</span></a>
-						<a href="{:url('portal/Article/doLike',array('id'=>$article['id']))}" class="js-count-btn"><i
-                                class="fa fa-thumbs-up"></i><span class="count">{$article.post_like}</span></a>
-						<a href="{:url('user/favorite/add')}"
-                           class="js-favorite-btn"
-                           data-title="{:base64_encode($article.post_title)}"
-                           data-url="{:cmf_url_encode('portal/Article/index',array('id'=>$article['id']))}"
-                           data-table="portal_post"
-                           data-id="{$article['id']}"
-                        >
-							<i class="fa fa-star-o"></i>
-						</a>
-					</span>
-                </div>
-                <hr>
-                <php>
-                    $before_content_hook_param=[
-                    'object_id'=>$article['id'],
-                    'table_name'=>'portal_post',
-                    'object_title'=>$article['post_title'],
-                    'user_id'=>$article['user_id'],
-                    'url'=>cmf_url_encode('portal/Article/index',array('id'=>$article['id'],'cid'=>$category['id'])),
-                    'object'=>$article
-                    ];
-                </php>
-                <hook name="before_content" param="before_content_hook_param"/>
 
-                <div id="article_content">
-                    {$article.post_content}
+        <main class="col-xs-12">
+
+            <div class="panel panel-default article-content">
+                <div class="panel-heading">
+                    <ol class="breadcrumb">
+                        <!-- S 面包屑导航 -->
+                        <li><a href="/cms/">首页</a></li>
+                        <li><a href="/cms/c/product.html">产品中心</a></li>
+                        <li><a href="/cms/c/wearable.html">智能设备</a></li>
+                        <!-- E 面包屑导航 -->
+                    </ol>
                 </div>
-                <if condition="!empty($article['post_source'])">
-                    <div>
-                        <b>注：本文转载自{$article.post_source}，转载目的在于传递更多信息，并不代表本网赞同其观点和对其真实性负责。如有侵权行为，请联系我们，我们会及时删除。</b>
+                <div class="panel-body">
+                    <div class="article-metas">
+                        <h1 class="metas-title">{$article.post_title}</h1>
+                        <!-- S 统计信息 -->
+                        <div class="metas-body">
+                            <span class="views-num">
+                                <i class="fa fa-eye"></i> {$article.post_hits} 阅读
+                            </span>
+                            <span class="comment-num">
+                                <i class="fa fa-comments"></i> {$article.comment_count} 评论
+                            </span>
+                            <span class="like-num">
+                                <i class="fa fa-thumbs-o-up"></i>
+                                <span class="js-like-num"> {$article.post_like} 点赞
+                                </span>
+                            </span>
+                        </div>
+                        <!-- E 统计信息 -->
                     </div>
-                </if>
+                    <div class="article-text">
+                        <!-- S 正文 -->
+                        <p>{$article.post_content}</p>
+                        <!-- E 正文 -->
+                    </div>
 
-                <php>
-                    $after_content_hook_param=[
-                    'object_id'=>$article['id'],
-                    'table_name'=>'portal_post',
-                    'object_title'=>$article['post_title'],
-                    'user_id'=>$article['user_id'],
-                    'url'=>cmf_url_encode('portal/Article/index',array('id'=>$article['id'],'cid'=>$category['id'])),
-                    'object'=>$article
-                    ];
-                </php>
-                <hook name="after_content" param="after_content_hook_param"/>
+                    <!-- S 付费阅读 -->
+                    <!-- E 付费阅读 -->
 
-                <php>
-                    $comment_hook_param=[
-                    'object_id'=>$article['id'],
-                    'table_name'=>'portal_post',
-                    'object_title'=>$article['post_title'],
-                    'url'=>cmf_url_encode('portal/Article/index',array('id'=>$article['id'],'cid'=>$category['id'])),
-                    'user_id'=>$article['user_id'],
-                    ];
-                    $comment=hook_one('comment',$comment_hook_param);
-                </php>
+                    <div class="article-donate">
+                        <a href="javascript:" class="btn btn-primary btn-like btn-lg" data-action="vote" data-type="like" data-id="109" data-tag="archives"><i class="fa fa-thumbs-up"></i> 点赞(<span>{$article.post_like}</span>)</a>
+                        <a href="javascript:" class="btn btn-outline-primary btn-donate btn-lg" data-image="https://cdn.demo.fastadmin.net/assets/addons/cms/img/qrcode.png" data-action="donate" data-id="109"><i class="fa fa-cny"></i> 打赏</a>
+                    </div>
 
-                <if condition="empty($comment) && cmf_get_current_admin_id()">
-                    <div style="border: 1px dashed #ddd;min-height: 200px;padding-top: 50px;">
-                        <div class="alert alert-warning" role="alert">
-                            此区域这为评论区，请安装评论插件！<br>
-                            <em>注：普通用户不会看到此提示！</em>
+                    <div class="entry-meta">
+                        <ul>
+                            <!-- S 归档 -->
+                            <li>本文分类：<a href="javascript:;">{$category.name}</a></li>
+                            <li>本文标签：{$article.post_keywords}</li>
+                            <li>浏览次数：<span>{$article.post_hits}</span> 次浏览</li>
+                            <li>发布日期：{:date('Y-m-d H:i',$article.published_time)} by {$article.user.user_nickname}</li>
+                            <li>本文链接：<a href="{:cmf_url('portal/Article/index',array('id'=>$article['id']))}">{$_SERVER['HTTP_HOST']}{:url('portal/Article/index',array('id'=>$article['id']))}</a></li>
+                            <!-- S 归档 -->
+                        </ul>
+
+                        <ul class="article-prevnext">
+                            <!-- S 上一篇下一篇 -->
+                            <notempty name="$prev_article">
+                                <li>
+                                    <span>上一篇：</span>
+                                    <a href="{:cmf_url('portal/article/index', array('id' => $prev_article['id'], 'cid' => $category['id']))}">{$prev_article['post_title']}</a>
+                                </li>
+                            </notempty>
+                            <notempty name="$next_article">
+                                <li>
+                                    <span>下一篇：</span>
+                                    <a href="{:cmf_url('portal/article/index', array('id' => $next_article['id'], 'cid' => $category['id']))}">{$next_article['post_title']}</a>
+                                </li>
+                            </notempty>
+                            <!-- E 上一篇下一篇 -->
+                        </ul>
+                    </div>
+
+                    <div class="related-article">
+                        <h5>猜你喜欢</h5>
+                        <div class="row">
+                            <portal:articles limit="5" order="post.post_hits DESC">
+                                <!--S 相关文章-->
+                                <div class="col-sm-3 col-xs-6" <if condition="$key eq 0">style="padding-left: 5px;"</if>>
+                                    <a href="javascript:;" class="img-zoom">
+                                        <div class="embed-responsive embed-responsive-4by3">
+                                            <img src="{:cmf_get_image_url($vo.thumbnail)}" alt="" class="embed-responsive-item">
+                                        </div>
+                                    </a>
+                                    <h5>{$vo.post_title}</h5>
+                                </div>
+                                <!--E 相关文章-->
+                            </portal:articles>
                         </div>
                     </div>
-                </if>
-                {$comment}
+                    <div class="clearfix"></div>
+                </div>
             </div>
 
-
-        </div>
-        <div class="col-md-3">
-            <div class="tc-box first-box">
-                <div class="headtitle">
-                    <h2>热门文章</h2>
+            <div class="panel panel-default" id="comments">
+                <div class="panel-heading">
+                    <h3 class="panel-title">评论列表 <small>共有 <span>{$article.comment_count}</span> 条评论</small></h3>
                 </div>
-                <div class="ranking">
+                <div class="panel-body">
                     <php>
-                        $hot_articles=[];
+                        $comment_hook_param=[
+                        'object_id'=>$article['id'],
+                        'table_name'=>'portal_post',
+                        'object_title'=>$article['post_title'],
+                        'url'=>cmf_url_encode('portal/Article/index',array('id'=>$article['id'],'cid'=>$category['id'])),
+                        'user_id'=>$article['user_id'],
+                        ];
+                        $comment=hook_one('comment',$comment_hook_param);
                     </php>
-                    <ul class="list-unstyled">
-                        <portal:articles limit="5" order="post.post_hits DESC">
-                            <php>$top=$key<3?"top3":"";</php>
-                            <li class="{$top}">
-                                <i>{$key+1}</i>
-                                <a title="{$vo.post_title}"
-                                   href="{:url('portal/article/index',array('id'=>$vo['id']))}">
-                                    {$vo.post_title}
-                                </a>
-                            </li>
-                        </portal:articles>
-                    </ul>
+                    <if condition="empty($comment) && cmf_get_current_admin_id()">
+                        <div style="border: 1px dashed #ddd;min-height: 200px;padding-top: 50px;">
+                            <div class="alert alert-warning" role="alert">
+                                此区域这为评论区，请安装评论插件！<br>
+                                <em>注：普通用户不会看到此提示！</em>
+                            </div>
+                        </div>
+                    </if>
+                    {$comment}
+                    <!--<div id="comment-container">-->
+                        <!--&lt;!&ndash; S 评论列表 &ndash;&gt;-->
+                        <!--<div id="commentlist">-->
+                            <!--<dl id="comment-768">-->
+                                <!--<dt><a href="/u/1732" target="_blank"><img src='__STATIC__/informanction/picture/1f9d00a60cff45bb85e7e1eb77270f48.gif'/></a></dt>-->
+                                <!--<dd>-->
+                                    <!--<div class="parent">-->
+                                        <!--<cite><a href='/u/1732' target="_blank">刘力同～微机保护～瑞捷电气</a></cite>-->
+                                        <!--<small> 33分钟前 <a href="javascript:;" data-id="768" title="@刘力同～微机保护～瑞捷电气 " class="reply">回复TA</a></small>-->
+                                        <!--<p>测试一下</p>-->
+                                    <!--</div>-->
+                                <!--</dd>-->
+                                <!--<div class="clearfix"></div>-->
+                            <!--</dl>-->
+                            <!--<dl id="comment-765">-->
+                                <!--<dt><a href="/u/2062" target="_blank"><img src='__STATIC__/informanction/picture/9d04a3d59cca4f719adf3c58b3f78336.gif'/></a></dt>-->
+                                <!--<dd>-->
+                                    <!--<div class="parent">-->
+                                        <!--<cite><a href='/u/2062' target="_blank">老陈</a></cite>-->
+                                        <!--<small> 1天前 <a href="javascript:;" data-id="765" title="@老陈 " class="reply">回复TA</a></small>-->
+                                        <!--<p>图片评论？</p>-->
+                                    <!--</div>-->
+                                <!--</dd>-->
+                                <!--<div class="clearfix"></div>-->
+                            <!--</dl>-->
+                            <!--<dl id="comment-764">-->
+                                <!--<dt><a href="/u/1" target="_blank"><img src='__STATIC__/informanction/picture/avatar.png'/></a></dt>-->
+                                <!--<dd>-->
+                                    <!--<div class="parent">-->
+                                        <!--<cite><a href='/u/1' target="_blank">admin</a></cite>-->
+                                        <!--<small> 1天前 <a href="javascript:;" data-id="764" title="@admin " class="reply">回复TA</a></small>-->
+                                        <!--<p><em>@A01花开花落</em> 1</p>-->
+                                    <!--</div>-->
+                                <!--</dd>-->
+                                <!--<div class="clearfix"></div>-->
+                            <!--</dl>-->
+                            <!--<dl id="comment-758">-->
+                                <!--<dt><a href="/u/5150" target="_blank"><img src='__STATIC__/informanction/picture/7d85819474ad4fe6845e2f60e38bf0b5.gif'/></a></dt>-->
+                                <!--<dd>-->
+                                    <!--<div class="parent">-->
+                                        <!--<cite><a href='/u/5150' target="_blank">林选臣</a></cite>-->
+                                        <!--<small> 1天前 <a href="javascript:;" data-id="758" title="@林选臣 " class="reply">回复TA</a></small>-->
+                                        <!--<p>支持插入视频吗？</p>-->
+                                    <!--</div>-->
+                                <!--</dd>-->
+                                <!--<div class="clearfix"></div>-->
+                            <!--</dl>-->
+                            <!--<dl id="comment-754">-->
+                                <!--<dt><a href="/u/1649" target="_blank"><img src='__STATIC__/informanction/picture/0a7199fb46c840f18786b6559daa10f1.gif'/></a></dt>-->
+                                <!--<dd>-->
+                                    <!--<div class="parent">-->
+                                        <!--<cite><a href='/u/1649' target="_blank">Prometheus</a></cite>-->
+                                        <!--<small> 2天前 <a href="javascript:;" data-id="754" title="@Prometheus " class="reply">回复TA</a></small>-->
+                                        <!--<p>嘻嘻嘻</p>-->
+                                    <!--</div>-->
+                                <!--</dd>-->
+                                <!--<div class="clearfix"></div>-->
+                            <!--</dl>-->
+                            <!--<dl id="comment-747">-->
+                                <!--<dt><a href="/u/2772" target="_blank"><img src='__STATIC__/informanction/picture/dc0141e1a12c4f31b2e2a73d67089d8d.gif'/></a></dt>-->
+                                <!--<dd>-->
+                                    <!--<div class="parent">-->
+                                        <!--<cite><a href='/u/2772' target="_blank">陆宇</a></cite>-->
+                                        <!--<small> 5天前 <a href="javascript:;" data-id="747" title="@陆宇 " class="reply">回复TA</a></small>-->
+                                        <!--<p>可以的</p>-->
+                                    <!--</div>-->
+                                <!--</dd>-->
+                                <!--<div class="clearfix"></div>-->
+                            <!--</dl>-->
+                            <!--<dl id="comment-746">-->
+                                <!--<dt><a href="/u/5128" target="_blank"><img src='__STATIC__/informanction/picture/avatar.png'/></a></dt>-->
+                                <!--<dd>-->
+                                    <!--<div class="parent">-->
+                                        <!--<cite><a href='/u/5128' target="_blank">王霸彪</a></cite>-->
+                                        <!--<small> 5天前 <a href="javascript:;" data-id="746" title="@王霸彪 " class="reply">回复TA</a></small>-->
+                                        <!--<p><em>@admin</em> 王霸彪 王者的王霸气的霸彪悍的彪</p>-->
+                                    <!--</div>-->
+                                <!--</dd>-->
+                                <!--<div class="clearfix"></div>-->
+                            <!--</dl>-->
+                            <!--<dl id="comment-745">-->
+                                <!--<dt><a href="/u/5128" target="_blank"><img src='__STATIC__/informanction/picture/avatar.png'/></a></dt>-->
+                                <!--<dd>-->
+                                    <!--<div class="parent">-->
+                                        <!--<cite><a href='/u/5128' target="_blank">王霸彪</a></cite>-->
+                                        <!--<small> 5天前 <a href="javascript:;" data-id="745" title="@王霸彪 " class="reply">回复TA</a></small>-->
+                                        <!--<p><em>@admin</em> 我才叫王霸彪</p>-->
+                                    <!--</div>-->
+                                <!--</dd>-->
+                                <!--<div class="clearfix"></div>-->
+                            <!--</dl>-->
+                            <!--<dl id="comment-739">-->
+                                <!--<dt><a href="/u/1" target="_blank"><img src='__STATIC__/informanction/picture/avatar.png'/></a></dt>-->
+                                <!--<dd>-->
+                                    <!--<div class="parent">-->
+                                        <!--<cite><a href='/u/1' target="_blank">admin</a></cite>-->
+                                        <!--<small> 5天前 <a href="javascript:;" data-id="739" title="@admin " class="reply">回复TA</a></small>-->
+                                        <!--<p>我叫王霸彪 王者的王霸气的霸彪悍的彪</p>-->
+                                    <!--</div>-->
+                                <!--</dd>-->
+                                <!--<div class="clearfix"></div>-->
+                            <!--</dl>-->
+                            <!--<dl id="comment-734">-->
+                                <!--<dt><a href="/u/1" target="_blank"><img src='__STATIC__/informanction/picture/avatar.png'/></a></dt>-->
+                                <!--<dd>-->
+                                    <!--<div class="parent">-->
+                                        <!--<cite><a href='/u/1' target="_blank">admin</a></cite>-->
+                                        <!--<small> 6天前 <a href="javascript:;" data-id="734" title="@admin " class="reply">回复TA</a></small>-->
+                                        <!--<p><em>@xie</em> dsasdas</p>-->
+                                    <!--</div>-->
+                                <!--</dd>-->
+                                <!--<div class="clearfix"></div>-->
+                            <!--</dl>-->
+                        <!--</div>-->
+                        <!--&lt;!&ndash; E 评论列表 &ndash;&gt;-->
+
+                        <!--&lt;!&ndash; S 评论分页 &ndash;&gt;-->
+                        <!--<div id="commentpager" class="text-center">-->
+                            <!--<ul class="pagination"><li class="disabled"><span>&laquo;</span></li> <li class="active"><span>1</span></li><li><a href="/cms/a/109.html?cp=2#comments">2</a></li><li><a href="/cms/a/109.html?cp=3#comments">3</a></li><li><a href="/cms/a/109.html?cp=4#comments">4</a></li><li><a href="/cms/a/109.html?cp=5#comments">5</a></li><li><a href="/cms/a/109.html?cp=6#comments">6</a></li><li><a href="/cms/a/109.html?cp=7#comments">7</a></li><li><a href="/cms/a/109.html?cp=8#comments">8</a></li><li class="disabled"><span>...</span></li><li><a href="/cms/a/109.html?cp=23#comments">23</a></li><li><a href="/cms/a/109.html?cp=24#comments">24</a></li> <li><a href="/cms/a/109.html?cp=2#comments">&raquo;</a></li></ul>    </div>-->
+                        <!--&lt;!&ndash; E 评论分页 &ndash;&gt;-->
+
+                        <!--&lt;!&ndash; S 发表评论 &ndash;&gt;-->
+                        <!--<div id="postcomment">-->
+                            <!--<h3>发表评论 <a href="javascript:;">-->
+                                <!--<small>取消回复</small>-->
+                            <!--</a></h3>-->
+                            <!--<form action="/addons/cms/comment/post.html" method="post" id="postform">-->
+                                <!--<input type="hidden" name="__token__" value="c3cb7192f7889d28eefa669635f5ba91" />            <input type="hidden" name="type" value="archives"/>-->
+                                <!--<input type="hidden" name="aid" value="109"/>-->
+                                <!--<input type="hidden" name="pid" id="pid" value="0"/>-->
+                                <!--<div class="form-group">-->
+                                    <!--<textarea name="content" class="form-control" disabled placeholder="请登录后再发表评论"  id="commentcontent" cols="6" rows="5" tabindex="4"></textarea>-->
+                                <!--</div>-->
+                                <!--<div class="form-group">-->
+                                    <!--<a href="/index/user/login.html" class="btn btn-primary">登录</a>-->
+                                    <!--<a href="/index/user/register.html" class="btn btn-outline-primary">注册新账号</a>-->
+                                <!--</div>-->
+                            <!--</form>-->
+                        <!--</div>-->
+                        <!--&lt;!&ndash; E 发表评论 &ndash;&gt;-->
+                    <!--</div>-->
                 </div>
             </div>
 
-        </div>
+        </main>
 
     </div>
-
-    <include file="public@footer"/>
 </div>
 
-<include file="public@scripts"/>
-<hook name="before_body_end"/>
+
+<footer>
+    <div class="container-fluid" id="footer">
+        <div class="container">
+            <div class="row footer-inner">
+                <div class="col-md-3 col-sm-3">
+                    <div class="footer-logo">
+                        <a href="#"><i class="fa fa-bookmark"></i></a>
+                    </div>
+                    <p class="copyright"><small>© 2017. All Rights Reserved. <br>
+                        FastAdmin
+                    </small>
+                    </p>
+                </div>
+                <div class="col-md-5 col-md-push-1 col-sm-5 col-sm-push-1">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <ul class="links">
+                                <li><a href="#">关于我们</a></li>
+                                <li><a href="#">发展历程</a></li>
+                                <li><a href="#">服务项目</a></li>
+                                <li><a href="#">团队成员</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-4">
+                            <ul class="links">
+                                <li><a href="#">新闻</a></li>
+                                <li><a href="#">资讯</a></li>
+                                <li><a href="#">推荐</a></li>
+                                <li><a href="#">博客</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            <ul class="links">
+                                <li><a href="#">服务</a></li>
+                                <li><a href="#">圈子</a></li>
+                                <li><a href="#">论坛</a></li>
+                                <li><a href="#">广告</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-3 col-md-push-1 col-sm-push-1">
+                    <div class="footer-social">
+                        <a href="#"><i class="fa fa-weibo"></i></a>
+                        <a href="#"><i class="fa fa-qq"></i></a>
+                        <a href="#"><i class="fa fa-wechat"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div id="floatbtn">
+    <!-- S 浮动按钮 -->
+
+    <a id="back-to-top" class="hover" href="javascript:;">
+        <i class="iconfont icon-backtotop"></i>
+        <em>返回<br>顶部</em>
+    </a>
+    <!-- E 浮动按钮 -->
+</div>
+
+
+<script type="text/javascript" src="__STATIC__/informanction/js/jquery.min.js"></script>
+<script type="text/javascript" src="__STATIC__/informanction/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="__STATIC__/informanction/js/layer.js"></script>
+<script type="text/javascript" src="__STATIC__/informanction/js/template-native.js"></script>
+<script type="text/javascript" src="__STATIC__/informanction/js/bootstrap-typeahead.min.js"></script>
+<script type="text/javascript" src="__STATIC__/informanction/js/swiper.min.js"></script>
+<script type="text/javascript" src="__STATIC__/informanction/js/cms.js"></script>
+<script type="text/javascript" src="__STATIC__/informanction/js/common.js"></script>
+
+<script >
+    var galleryThumbs = new Swiper('.gallery-thumbs', {
+        spaceBetween: 10,
+        slidesPerView: 5,
+        freeMode: true,
+        watchSlidesVisibility: true,
+        watchSlidesProgress: true,
+    });
+    var galleryTop = new Swiper('.gallery-top', {
+        spaceBetween: 10,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        thumbs: {
+            swiper: galleryThumbs
+        }
+    });
+</script>
+
 </body>
 </html>

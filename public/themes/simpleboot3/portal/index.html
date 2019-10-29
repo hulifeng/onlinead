@@ -1,188 +1,465 @@
 <!DOCTYPE html>
-<html>
+<!--[if lt IE 7]>
+<html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class=""> <!--<![endif]-->
 <head>
-    <title>首页 {$site_info.site_name|default=''}</title>
-    <meta name="keywords" content="{$site_info.site_seo_keywords|default=''}"/>
-    <meta name="description" content="{$site_info.site_seo_description|default=''}">
-    <include file="public@head"/>
-    <link href="__TMPL__/public/assets/css/slippry/slippry.css" rel="stylesheet">
-    <style>
-        .caption-wraper {
-            position: absolute;
-            left: 50%;
-            bottom: 2em;
-        }
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <title>ADTalking</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
 
-        .caption-wraper .caption {
-            position: relative;
-            left: -50%;
-            background-color: rgba(0, 0, 0, 0.54);
-            padding: 0.4em 1em;
-            color: #fff;
-            -webkit-border-radius: 1.2em;
-            -moz-border-radius: 1.2em;
-            -ms-border-radius: 1.2em;
-            -o-border-radius: 1.2em;
-            border-radius: 1.2em;
-        }
+    <link rel="stylesheet" media="screen" href="__STATIC__/informanction/css/bootstrap.min.css"/>
+    <link rel="stylesheet" media="screen" href="__STATIC__/informanction/css/font-awesome.min.css"/>
+    <link rel="stylesheet" media="screen" href="__STATIC__/informanction/css/layer.css"/>
+    <link rel="stylesheet" media="screen" href="__STATIC__/informanction/css/swiper.min.css">
+    <link rel="stylesheet" media="screen" href="__STATIC__/informanction/css/common.css"/>
 
-        .tc-gridbox {
-            margin: 0;
-        }
+    <link rel="stylesheet" href="__STATIC__/informanction/css/font_1104524_z1zcv22ej09.css">
 
-        @media (max-width: 767px) {
-            .caption-wraper {
-                left: 0;
-                bottom: 0.4em;
-            }
 
-            .caption-wraper .caption {
-                left: 0;
-                padding: 0.2em 0.4em;
-                font-size: 0.92em;
-                -webkit-border-radius: 0;
-                -moz-border-radius: 0;
-                -ms-border-radius: 0;
-                -o-border-radius: 0;
-                border-radius: 0;
-            }
-        }
+    <!--[if lt IE 9]>
+    <script src="__STATIC__/informanction/js/html5shiv.js"></script>
+    <script src="__STATIC__/informanction/js/respond.min.js"></script>
+    <![endif]-->
 
-    </style>
-    <hook name="before_head_end"/>
 </head>
-<body class="body-white">
-<include file="public@nav"/>
+<body class="group-page">
 
-<ul id="home-slider" class="list-unstyled">
-    <php>
-        $top_slide_id=empty($theme_vars['top_slide'])?1:$theme_vars['top_slide'];
-    </php>
-    <slides id="$top_slide_id">
-        <li>
-            <div class="caption-wraper">
-                <div class="caption">{$vo.title|default=''}</div>
-            </div>
-            <a href="{$vo.url|default=''}"><img src="{:cmf_get_image_url($vo.image)}" alt=""></a>
-        </li>
-    </slides>
-    <noslides id="$top_slide_id">
-        <li>
-            <div class="caption-wraper">
-                <div class="caption">此幻灯片只是演示,您没有设置任何幻灯片,请到后台模板设置！</div>
-            </div>
-            <a href=""><img src="__TMPL__/public/assets/images/demo/1.jpg" alt=""></a>
-        </li>
-        <li>
-            <div class="caption-wraper">
-                <div class="caption">此幻灯片只是演示,您没有设置任何幻灯片,请到后台模板设置！</div>
-            </div>
-            <a href=""><img src="__TMPL__/public/assets/images/demo/2.jpg" alt=""></a>
-        </li>
-        <li>
-            <div class="caption-wraper">
-                <div class="caption">此幻灯片只是演示,您没有设置任何幻灯片,请到后台模板设置！</div>
-            </div>
-            <a href=""><img src="__TMPL__/public/assets/images/demo/3.jpg" alt=""></a>
-        </li>
-    </noslides>
-</ul>
+<taglib name="app\portal\taglib\Portal"/>
 
-<div class="container">
-    <widget name="features">
-        <div>
-            <h1 class="text-center">{$widget.title}</h1>
-            <h3 class="text-center">{$widget.vars.sub_title}</h3>
+<header class="header">
+    <!-- S 导航 -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/cms/"><img src="__STATIC__/informanction/picture/logo.png" width="180" alt=""></a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <navigation nav-id="1" root="">
+                        <navigationMenu root="li" class="dropdown">
+                            <a href="{$menu.href|default=''}" target="{$menu.target|default=''}">{$menu.name|default=''}</a>
+                        </navigationMenu>
+                        <navigationFolder root="li" dropdown="ul"
+                                          dropdown-class="dropdown-menu" role="menu">
+                            <a href="#" data-toggle="dropdown">
+                                {$menu.name|default=''} <b class="caret"></b>
+                            </a>
+                        </navigationFolder>
+                    </navigation>
+                </ul>
+
+                <ul class="nav navbar-right hidden">
+                    <ul class="nav navbar-nav">
+                        <li><a href="javascript:;" class="addbookbark"><i class="fa fa-star"></i> 加入收藏</a></li>
+                        <li><a href="javascript:;" class=""><i class="fa fa-phone"></i> 联系我们</a></li>
+                    </ul>
+                </ul>
+            </div>
+
         </div>
-        <php>
-            $features_count = count($widget['vars']['features']);
-            $rows = ceil($features_count/3);
-        </php>
-        <for start="1" end="$rows" comparison="elt" step="1" name="row">
-            <php>
-                $first_row = ($row-1)*3;
-                $features = array_slice($widget['vars']['features'],$first_row,3);
-            </php>
-            <div class="row">
-                <foreach name="features" item="vo">
-                    <div class="col-md-4">
-                        <h2 class="font-large nospace"><i class="fa fa-{$vo.icon}"></i> {$vo.title}</h2>
-                        <p>{$vo.content}</p>
+    </nav>
+    <!-- E 导航 -->
+
+</header>
+
+
+<div class="container" id="content-container">
+
+    <div class="row">
+
+        <main class="col-md-8">
+            <div class="swiper-container index-focus">
+                <!-- S 焦点图 -->
+                <div id="index-focus" class="carousel slide carousel-focus" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#index-focus" data-slide-to="0" class="active"></li>
+                        <li data-target="#index-focus" data-slide-to="1" class=""></li>
+                        <li data-target="#index-focus" data-slide-to="2" class=""></li>
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                        <empty name="slide_list">
+                            <div class="text-center">—— 您还没有设置幻灯片，请去后台添加 ——</div>
+                        <else/>
+                            <foreach name="slide_list" item="vo" key="key">
+                                <div class="item <if condition="$key eq 0"> active</if>">
+                                    <a href="/">
+                                        <div class="carousel-img" style="background-image:url('{:cmf_get_image_url($vo.image)}');">
+
+                                        </div>
+                                        <div class="carousel-caption hidden-xs">
+                                            <h3>{$vo.title}</h3>
+                                        </div>
+                                    </a>
+                                </div>
+                            </foreach>
+                        </empty>
                     </div>
-                </foreach>
+                    <a class="left carousel-control" href="#index-focus" role="button" data-slide="prev">
+                        <span class="icon-prev fa fa-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#index-focus" role="button" data-slide="next">
+                        <span class="icon-next fa fa-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            <!-- E 焦点图 -->
+    </div>
+
+    <div class="panel panel-default index-gallary">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                <span>热门图集</span>
+                <div class="more">
+                    <a href="javascript:;">查看更多</a>
+                </div>
+            </h3>
+
+        </div>
+        <div class="panel-body">
+            <div class="related-article">
+                <div class="row">
+                    <!-- S 热门图集 -->
+                    <div class="col-sm-3 col-xs-6">
+                        <a href="/cms/a/109.html" class="img-zoom">
+                            <div class="embed-responsive embed-responsive-4by3">
+                                <img src="__STATIC__/informanction/picture/be50b9c1759142a4fb2e885f1de39aac.png"
+                                     alt="奥睿科ORICO HU3温室加湿器" class="embed-responsive-item">
+                            </div>
+                        </a>
+                        <h5>奥睿科ORICO HU3温室加湿器</h5>
+                    </div>
+                    <div class="col-sm-3 col-xs-6">
+                        <a href="/cms/a/92.html" class="img-zoom">
+                            <div class="embed-responsive embed-responsive-4by3">
+                                <img src="__STATIC__/informanction/picture/5871cf963ae2d5e2565b7a997db8500c.png"
+                                     alt="Macbook Pro Retina 笔记本" class="embed-responsive-item">
+                            </div>
+                        </a>
+                        <h5>Macbook Pro Retina 笔记本</h5>
+                    </div>
+                    <div class="col-sm-3 col-xs-6">
+                        <a href="/cms/a/104.html" class="img-zoom">
+                            <div class="embed-responsive embed-responsive-4by3">
+                                <img src="__STATIC__/informanction/picture/393cf89c183ad1f896c916f0e623030a.png"
+                                     alt="智能游戏WIFI无线手柄" class="embed-responsive-item">
+                            </div>
+                        </a>
+                        <h5>智能游戏WIFI无线手柄</h5>
+                    </div>
+                    <div class="col-sm-3 col-xs-6">
+                        <a href="/cms/a/108.html" class="img-zoom">
+                            <div class="embed-responsive embed-responsive-4by3">
+                                <img src="__STATIC__/informanction/picture/30752b442c826ab7d3a63f1ddfb5d9ac.png" alt="米家互联网洗烘一体机"
+                                     class="embed-responsive-item">
+                            </div>
+                        </a>
+                        <h5>米家互联网洗烘一体机</h5>
+                    </div>
+                    <!-- E 热门图集 -->
+                </div>
             </div>
-        </for>
+        </div>
+    </div>
 
-    </widget>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                <span>最近更新</span>
+            </h3>
+        </div>
+        <div class="panel-body p-0">
+            <div class="article-list">
 
-    <widget name="last_news">
-        <div>
-            <h1 class="text-center">{$widget.title}</h1>
+                <!-- S 首页列表 -->
+                <empty name="article_list">
+                    <div class="text-center" style="margin-top: 20px">
+                        —— 您还没有添加文章，请去后台添加 ——
+                    </div>
+                    <else/>
+                    <foreach name="article_list" item="vo">
+                        <article class="article-item">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="{:cmf_url('portal/article/index', array('id' => $vo.id))}">
+                                        <div class="embed-responsive embed-responsive-4by3 img-zoom">
+                                            <img src="{:cmf_get_image_url($vo['thumbnail'])}">
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h3 class="article-title">
+                                        <a href="{:cmf_url('portal/article/index', array('id' => $vo.id))}">{$vo.post_title}</a>
+                                    </h3>
+                                    <div class="article-intro hidden-xs">
+                                        {$vo->getPostContentAttr($vo['post_content'])}
+                                    </div>
+                                    <div class="article-tag">
+                                        <php>$tags = explode(',',$vo['post_keywords']);</php>
+                                        <foreach name="$tags" item="tag">
+                                            <a href="javascript:;" class="tag tag-primary">{$tag}</a>
+                                        </foreach>
+                                        <span itemprop="date">{:date('Y-m-d', $vo['published_time'])}</span>
+                                        <span itemprop="likes" title="点赞次数"><i
+                                                class="fa fa-thumbs-up"></i> {$vo['post_like']} 点赞</span>
+                                        <span itemprop="comments"><a href="javascript:;" target="_blank"
+                                                                     title="评论数"><i class="fa fa-comments"></i> {$vo['comment_count']}</a> 评论</span>
+                                        <span itemprop="views" title="浏览次数"><i class="fa fa-eye"></i> {$vo['post_hits']} 浏览</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </article>
+                    </foreach>
+                </empty>
+
+
+                <!-- E 首页列表 -->
+
+                <div class="text-center">
+                    <div class="pagination">{$page|default=''}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </main>
+
+    <aside class="col-xs-12 col-sm-4">
+        <div class="panel panel-default lasest-update">
+            <!-- S 最近更新 -->
+            <div class="panel-heading">
+                <h3 class="panel-title">最新更新</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="list-unstyled">
+                    <empty name="article_list">
+                        <div class="text-center">
+                            —— 暂无文章 ——
+                        </div>
+                    <else/>
+                        <portal:articles limit="5" order="post.published_time DESC">
+                            <li>
+                                <span>[{$category_list[$vo['category_id']]}]</span>
+                                <a class="link-dark" href="{:cmf_url('portal/article/index', array('id' => $vo['id']))}" title="{$vo.post_title}">{$vo.post_title}</a>
+                            </li>
+                        </portal:articles>
+                    </empty>
+                </ul>
+            </div>
+            <!-- E 最近更新 -->
         </div>
 
-        <div class="row">
-            <php>
-                $widget["vars"]["last_news_category_id"] = empty($widget["vars"]["last_news_category_id"])?1:$widget["vars"]["last_news_category_id"];
-                $last_news_limit=4;
-            </php>
-            <portal:articles limit="$last_news_limit" order="post.published_time DESC"
-                             categoryIds="$widget.vars.last_news_category_id">
-                <div class="col-md-3">
-                    <div class="tc-gridbox">
-                        <div class="header">
-                            <div class="item-image">
-                                <a href="{:cmf_url('portal/Article/index',array('id'=>$vo.id,'cid'=>$vo.category_id))}">
-                                    <present name="vo.more.thumbnail">
-                                        <empty name="vo.more.thumbnail">
-                                            <img src="__TMPL__/public/assets/images/default-thumbnail.png"
-                                                 class="img-responsive"
-                                                 alt="">
-                                            <else/>
-                                            <img src="{:cmf_get_image_url($vo.more.thumbnail)}"
-                                                 class="img-responsive"
-                                                 alt="">
-                                        </empty>
-                                        <else/>
-                                        <img src="__TMPL__/public/assets/images/default-thumbnail.png"
-                                             class="img-responsive"
-                                             alt="">
-                                    </present>
+        <div class="panel panel-blockimg">
+
+        </div>
+
+
+        <div class="panel panel-blockimg">
+            <a href="https://www.fastadmin.net/store/ask.html">
+                <img src="__STATIC__/informanction/picture/howto.png" class="img-responsive">
+            </a>
+        </div>
+
+
+        <!-- S 热门资讯 -->
+        <div class="panel panel-default hot-article">
+            <div class="panel-heading">
+                <h3 class="panel-title">推荐资讯</h3>
+            </div>
+            <div class="panel-body">
+                <empty name="article_list">
+                    <div class="text-center">
+                        —— 暂无文章 ——
+                    </div>
+                <else/>
+                    <portal:articles limit="8" order="post.post_hits DESC">
+                        <div class="media media-number">
+                            <div class="media-left">
+                                <span class="num">{$key+1}</span>
+                            </div>
+                            <div class="media-body">
+                                <a class="link-dark" href="{:cmf_url('portal/article/index', array('id' => $vo.id))}" title="{$vo.post_title}">
+                                    {$vo.post_title}
                                 </a>
                             </div>
-                            <h3>
-                                <a href="{:cmf_url('portal/Article/index',array('id'=>$vo.id,'cid'=>$vo.category_id))}">{$vo.post_title}</a>
-                            </h3>
-                            <hr>
                         </div>
-                        <div class="body">
-                            <p>
-                                <a href="{:cmf_url('portal/Article/index',array('id'=>$vo.id,'cid'=>$vo.category_id))}">...</a>
-                            </p>
+                    </portal:articles>
+                </empty>
+            </div>
+        </div>
+        <!-- E 热门资讯 -->
+
+        <div class="panel panel-blockimg">
+            <a href="https://www.fastadmin.net/go/aliyun" rel="nofollow" title="FastAdmin推荐企业服务器" target="_blank">
+                <img src="__STATIC__/informanction/picture/aliyun360.png" class="img-responsive" alt="">
+            </a>
+        </div>
+
+        <!-- S 热门标签 -->
+        <div class="panel panel-default hot-tags">
+            <div class="panel-heading">
+                <h3 class="panel-title">热门标签</h3>
+            </div>
+            <div class="panel-body">
+                <div class="tags">
+                    <foreach name="tag_list" item="vo">
+                        <a href="javascript:;" class="tag"> <span>{$vo.name} {$vo.num}</span></a>
+                    </foreach>
+                </div>
+            </div>
+        </div>
+        <!-- E 热门标签 -->
+
+        <div class="panel panel-blockimg">
+            <a href="https://www.fastadmin.net/go/aliyun" title="FastAdmin推荐企业服务器" target="_blank">
+                <img src="__STATIC__/informanction/picture/enterprisehost.png" class="img-responsive" alt="">
+            </a>
+        </div>
+
+    </aside>
+</div>
+</div>
+
+<div class="container hidden-xs j-partner">
+    <div class="panel panel-default">
+        <!-- S 合作伙伴 -->
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                合作伙伴
+                <small>感谢以下的合作伙伴的大力支持</small>
+                <a href="javascript:;" target="_blank" class="more">联系我们</a>
+            </h3>
+        </div>
+        <div class="panel-body">
+            <ul class="list-unstyled list-partner">
+                <li><a href="/"><img src="__STATIC__/informanction/picture/58.png"/></a></li>
+                <li><a href="/"><img src="__STATIC__/informanction/picture/360.png"/></a></li>
+                <li><a href="/"><img src="__STATIC__/informanction/picture/alipay.png"/></a></li>
+                <li><a href="/"><img src="__STATIC__/informanction/picture/baidu.png"/></a></li>
+                <li><a href="/"><img src="__STATIC__/informanction/picture/boc.png"/></a></li>
+                <li><a href="/"><img src="__STATIC__/informanction/picture/cctv.png"/></a></li>
+                <li><a href="/"><img src="__STATIC__/informanction/picture/didi.png"/></a></li>
+                <li><a href="/"><img src="__STATIC__/informanction/picture/iqiyi.png"/></a></li>
+                <li><a href="/"><img src="__STATIC__/informanction/picture/qq.png"/></a></li>
+                <li><a href="/"><img src="__STATIC__/informanction/picture/suning.png"/></a></li>
+                <li><a href="/"><img src="__STATIC__/informanction/picture/taobao.png"/></a></li>
+                <li><a href="/"><img src="__STATIC__/informanction/picture/tuniu.png"/></a></li>
+                <li><a href="/"><img src="__STATIC__/informanction/picture/weibo.png"/></a></li>
+            </ul>
+        </div>
+        <!-- E 合作伙伴 -->
+
+        <!-- S 友情链接 -->
+        <div class="panel-heading">
+            <h3 class="panel-title">友情链接
+                <small>申请友情链接请务必先做好本站链接</small>
+                <a href="https://wpa.qq.com/msgrd?v=3&uin=&site=&menu=yes" target="_blank" class="more">申请友链</a></h3>
+        </div>
+        <div class="panel-body">
+            <div class="list-unstyled list-links">
+                <a href="javascript:;" title="">友链</a>
+                <a href="javascript:;" title="">友链</a>
+                <a href="javascript:;" title="">友链</a>
+                <a href="javascript:;" title="">友链</a>
+                <a href="javascript:;" title="">友链</a>
+            </div>
+        </div>
+        <!-- E 友情链接 -->
+    </div>
+
+</div>
+
+<footer>
+    <div class="container-fluid" id="footer">
+        <div class="container">
+            <div class="row footer-inner">
+                <div class="col-md-3 col-sm-3">
+                    <div class="footer-logo">
+                        <a href="#"><i class="fa fa-bookmark"></i></a>
+                    </div>
+                    <p class="copyright">
+                        <small>© 2019. All Rights Reserved. <br>
+                            AdTalking
+                        </small>
+                    </p>
+                </div>
+                <div class="col-md-5 col-md-push-1 col-sm-5 col-sm-push-1">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <ul class="links">
+                                <li><a href="#">关于我们</a></li>
+                                <li><a href="#">发展历程</a></li>
+                                <li><a href="#">服务项目</a></li>
+                                <li><a href="#">团队成员</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-4">
+                            <ul class="links">
+                                <li><a href="#">新闻</a></li>
+                                <li><a href="#">资讯</a></li>
+                                <li><a href="#">推荐</a></li>
+                                <li><a href="#">博客</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            <ul class="links">
+                                <li><a href="#">服务</a></li>
+                                <li><a href="#">圈子</a></li>
+                                <li><a href="#">论坛</a></li>
+                                <li><a href="#">广告</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-            </portal:articles>
+                <div class="col-md-3 col-sm-3 col-md-push-1 col-sm-push-1">
+                    <div class="footer-social">
+                        <a href="#"><i class="fa fa-weibo"></i></a>
+                        <a href="#"><i class="fa fa-qq"></i></a>
+                        <a href="#"><i class="fa fa-wechat"></i></a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </widget>
-    <include file="public@footer"/>
+    </div>
+</footer>
+
+<div id="floatbtn">
+    <!-- S 浮动按钮 -->
+
+    <a id="back-to-top" class="hover" href="javascript:;">
+        <i class="iconfont icon-backtotop"></i>
+        <em>返回<br>顶部</em>
+    </a>
+    <!-- E 浮动按钮 -->
 </div>
-<!-- /container -->
-<include file="public@scripts"/>
-<script src="__TMPL__/public/assets/js/slippry.min.js"></script>
-<script>
-    $(function () {
-        $("#home-slider").slippry({
-            transition: 'fade',
-            useCSS: true,
-            captions: false,
-            speed: 1000,
-            pause: 3000,
-            auto: true,
-            preload: 'visible'
-        });
-        $("#home-slider").show();
-    });
-</script>
-<hook name="before_body_end"/>
+
+
+<script type="text/javascript" src="__STATIC__/informanction/js/jquery.min.js"></script>
+<script type="text/javascript" src="__STATIC__/informanction/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="__STATIC__/informanction/js/layer.js"></script>
+<script type="text/javascript" src="__STATIC__/informanction/js/template-native.js"></script>
+<script type="text/javascript" src="__STATIC__/informanction/js/bootstrap-typeahead.min.js"></script>
+<script type="text/javascript" src="__STATIC__/informanction/js/swiper.min.js"></script>
+<script type="text/javascript" src="__STATIC__/informanction/js/cms.js"></script>
+<script type="text/javascript" src="__STATIC__/informanction/js/common.js"></script>
+
+
 </body>
 </html>
