@@ -247,7 +247,7 @@ class AdminCategoryController extends AdminBaseController
         $tpl = <<<tpl
 <tr class='data-item-tr'>
     <td>
-        <input type='checkbox' class='js-check' data-yid='js-check-y' data-xid='js-check-x' name='ids[]'
+        <input type='checkbox' lay-skin='primary' class='js-check' data-yid='js-check-y' data-xid='js-check-x' name='ids[]'
                value='\$id' data-name='\$name' \$checked>
     </td>
     <td>\$id</td>
