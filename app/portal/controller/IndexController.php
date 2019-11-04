@@ -27,7 +27,7 @@ class IndexController extends HomeBaseController
             ->select();
 
         // 查询文章列表
-        $articleList = PortalPostModel::with(['tags', 'categories'])->where("post_type", 1)->paginate(10);
+        $articleList = PortalPostModel::with(['tags', 'categories'])->where("post_type", 1)->where("post_status", 1)->paginate(10);
 
         // 获取分类名称
         $categories = Db::name('portal_category')->where("delete_time", "0")->select();
