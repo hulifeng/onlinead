@@ -96,29 +96,28 @@
                 <!-- S 焦点图 -->
                 <div id="index-focus" class="carousel slide carousel-focus" data-ride="carousel">
                     <ol class="carousel-indicators">
-                        <li data-target="#index-focus" data-slide-to="0" class="active"></li>
-                        <li data-target="#index-focus" data-slide-to="1" class=""></li>
-                        <li data-target="#index-focus" data-slide-to="2" class=""></li>
+                        <foreach name="slide_list" item="vo" key="key">
+                            <li data-target="#index-focus" data-slide-to="{{ $key}}" class="<if condition=" $key eq 0 "> active</if>"></li>
+                        </foreach>
                     </ol>
                     <div class="carousel-inner" role="listbox">
                         <empty name="slide_list">
                             <div class="text-center">—— 您还没有设置幻灯片，请去后台添加 ——</div>
                             <else/>
                             <foreach name="slide_list" item="vo" key="key">
-                                <div class="item <if condition=" $key eq 0
-                                "> active</if>">
-                                <a href="/">
-                                    <div class="carousel-img"
-                                         style="background-image:url('{:cmf_get_image_url($vo.image)}');">
+                                <div class="item <if condition=" $key eq 0 "> active</if>">
+                                    <a href="/">
+                                        <div class="carousel-img"
+                                             style="background-image:url('{:cmf_get_image_url($vo.image)}');">
 
-                                    </div>
-                                    <div class="carousel-caption hidden-xs">
-                                        <h3>{$vo.title}</h3>
-                                    </div>
-                                </a>
-                    </div>
-                    </foreach>
-                    </empty>
+                                        </div>
+                                        <div class="carousel-caption hidden-xs">
+                                            <h3>{$vo.title}</h3>
+                                        </div>
+                                    </a>
+                                </div>
+                            </foreach>
+                        </empty>
                 </div>
                 <a class="left carousel-control" href="#index-focus" role="button" data-slide="prev">
                     <span class="icon-prev fa fa-chevron-left" aria-hidden="true"></span>
