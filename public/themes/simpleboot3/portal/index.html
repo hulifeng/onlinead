@@ -106,7 +106,7 @@
                             <else/>
                             <foreach name="slide_list" item="vo" key="key">
                                 <div class="item <if condition=" $key eq 0 "> active</if>">
-                                    <a href="/">
+                                    <a href="{$vo.url}">
                                         <div class="carousel-img"
                                              style="background-image:url('{:cmf_get_image_url($vo.image)}');">
 
