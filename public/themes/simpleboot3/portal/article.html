@@ -147,11 +147,8 @@
                             <a href="{:cmf_url('portal/article/index', array('id' => $vo.id))}">{$vo.post_title}</a>
                         </div>
                         <div class="post-top-meta">
-                            <php>$tags = explode(',',$vo['post_keywords']);</php>
-                            <foreach name="$tags" item="tag">
-                                <a href="javascript:;" class="tag tag-primary">{$tag}</a>
-                            </foreach>
                             <span class="post-time">{:date('Y-m-d', $vo['published_time'])}</span>
+                            <span style="float: right;" itemprop="views" title="浏览次数"><i class="fa fa-eye"></i> {$vo['post_hits']} 浏览</span>
                         </div>
                     </div>
                 </div>
