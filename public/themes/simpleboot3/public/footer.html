@@ -1,39 +1,76 @@
-<br>
-<!-- Footer ================================================== -->
-<hr>
-<div id="footer">
-    <hook name="footer_start"/>
-    <div class="links">
-        <links>
-            <a href="{$vo.url|default=''}" target="{$vo.target|default=''}">{$vo.name|default=''}</a>&nbsp;
-        </links>
-
+<footer>
+    <div class="container-fluid" id="footer">
+        <div class="container">
+            <div class="row footer-inner">
+                <div class="col-md-3 col-sm-3">
+                    <div class="footer-logo">
+                        <a href="#"><i class="fa fa-bookmark"></i></a>
+                    </div>
+                    <p class="copyright">
+                        Copyright © 2019 AdTalking
+                    </p>
+                    <p >京ICP备19050817号-1</p>
+                </div>
+                <div class="col-md-5 col-md-push-1 col-sm-5 col-sm-push-1">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <ul class="links">
+                                <li><a href="#">关于我们</a></li>
+                                <li><a href="#">发展历程</a></li>
+                                <li><a href="#">服务项目</a></li>
+                                <li><a href="#">团队成员</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-4">
+                            <ul class="links">
+                                <li><a href="#">新闻</a></li>
+                                <li><a href="#">资讯</a></li>
+                                <li><a href="#">推荐</a></li>
+                                <li><a href="#">博客</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            <ul class="links">
+                                <li><a href="#">服务</a></li>
+                                <li><a href="#">圈子</a></li>
+                                <li><a href="#">论坛</a></li>
+                                <li><a href="#">广告</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-3 col-md-push-1 col-sm-push-1">
+                    <div class="footer-social">
+                        <a href="#"><i class="fa fa-weibo"></i></a>
+                        <a href="#"><i class="fa fa-qq"></i></a>
+                        <a href="#"><i class="fa fa-wechat"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <p>
-        Made by <a href="http://www.thinkcmf.com" target="_blank">ThinkCMF</a>
-        Code licensed under the
-        <a href="http://www.apache.org/licenses/LICENSE-2.0" rel="nofollow" target="_blank">Apache License v2.0</a>.
-        <br/>
-        Based on
-        <a href="http://getbootstrap.com/" target="_blank">Bootstrap</a>.
-        Icons from
-        <a href="http://fortawesome.github.com/Font-Awesome/" target="_blank">Font Awesome</a>
-        <br>
-        <notempty name="site_info.site_icp">
-            <a href="http://www.miitbeian.gov.cn/" target="_blank">{$site_info.site_icp}</a>
-            <else/>
-            请在后台设置"网站信息"设置"ICP备"
-        </notempty>
-        <notempty name="site_info.site_gwa">
-            <img src="__TMPL__/public/assets/images/ghs.png">
-            <a href="http://beian.gov.cn/" target="_blank">{$site_info.site_gwa}</a>
-            <else/>
-            请在后台设置"网站信息"设置"公网安备"
-        </notempty>
+</footer>
+
+<div id="floatbtn">
+    <!-- S 浮动按钮 -->
+
+    <a id="back-to-top" class="hover" href="javascript:;">
+        <i class="iconfont icon-backtotop"></i>
+        <em>返回<br>顶部</em>
+    </a>
+    <!-- E 浮动按钮 -->
+</div>
 
 
-    </p>
-</div>
-<div id="backtotop">
-    <i class="fa fa-arrow-circle-up"></i>
-</div>
+<script type="text/javascript" src="__STATIC__/informanction/js/jquery.min.js"></script>
+<script type="text/javascript" src="__STATIC__/informanction/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="__STATIC__/informanction/js/layer.js"></script>
+<script type="text/javascript" src="__STATIC__/informanction/js/template-native.js"></script>
+<script type="text/javascript" src="__STATIC__/informanction/js/bootstrap-typeahead.min.js"></script>
+<script type="text/javascript" src="__STATIC__/informanction/js/swiper.min.js"></script>
+<script type="text/javascript" src="__STATIC__/informanction/js/cms.js"></script>
+<script type="text/javascript" src="__STATIC__/informanction/js/common.js"></script>
+
+
+</body>
+</html>

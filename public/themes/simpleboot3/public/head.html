@@ -1,58 +1,101 @@
-<taglib name="app\portal\taglib\Portal"/>
-<include file="public@function"/>
-<meta name="author" content="ThinkCMF">
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
-<!-- Set render engine for 360 browser -->
-<meta name="renderer" content="webkit">
-
-<!-- No Baidu Siteapp-->
-<meta http-equiv="Cache-Control" content="no-siteapp"/>
-
-<!-- HTML5 shim for IE8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-<![endif]-->
-<link rel="icon" href="__TMPL__/public/assets/images/favicon.png" type="image/png">
-<link rel="shortcut icon" href="__TMPL__/public/assets/images/favicon.png" type="image/png">
-<link href="__TMPL__/public/assets/simpleboot3/themes/simpleboot3/bootstrap.min.css" rel="stylesheet">
-<link href="__TMPL__/public/assets/simpleboot3/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"
-      type="text/css">
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>
-<link rel="stylesheet" href="__TMPL__/public/assets/simpleboot3/font-awesome/4.4.0/css/font-awesome-ie7.min.css">
-<![endif]-->
-<link href="__TMPL__/public/assets/css/style.css" rel="stylesheet">
-<style>
-    /*html{filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);-webkit-filter: grayscale(1);}*/
-    #backtotop {
-        position: fixed;
-        bottom: 50px;
-        right: 20px;
-        display: none;
-        cursor: pointer;
-        font-size: 50px;
-        z-index: 9999;
-    }
+<html class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class=""> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <php>
+        $site_info = cmf_get_site_info();
+    </php>
+    <title>{$site_info['site_seo_title']}</title>
+    <meta name="keywords" content="{$site_info['site_seo_keywords']|default=''}"/>
+    <meta name="description" content="{$site_info['site_seo_description']|default=''}"/>
 
-    #backtotop:hover {
-        color: #333
-    }
+    <link rel="stylesheet" media="screen" href="__STATIC__/informanction/css/bootstrap.min.css"/>
+    <link rel="stylesheet" media="screen" href="__STATIC__/informanction/css/font-awesome.min.css"/>
+    <link rel="stylesheet" media="screen" href="__STATIC__/informanction/css/layer.css"/>
+    <link rel="stylesheet" media="screen" href="__STATIC__/informanction/css/swiper.min.css">
+    <link rel="stylesheet" media="screen" href="__STATIC__/informanction/css/common.css"/>
 
-    #main-menu-user li.user {
-        display: none
-    }
-</style>
-<script type="text/javascript">
-    //全局变量
-    var GV = {
-        ROOT: "__ROOT__/",
-        WEB_ROOT: "__WEB_ROOT__/",
-        JS_ROOT: "static/js/"
-    };
-</script>
-<script src="__TMPL__/public/assets/js/jquery-1.10.2.min.js"></script>
-<script src="__TMPL__/public/assets/js/jquery-migrate-1.2.1.js"></script>
-<script src="__STATIC__/js/wind.js"></script>
-	
+    <link rel="stylesheet" href="__STATIC__/informanction/css/font_1104524_z1zcv22ej09.css">
+
+
+    <!--[if lt IE 9]>
+    <script src="__STATIC__/informanction/js/html5shiv.js"></script>
+    <script src="__STATIC__/informanction/js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body class="group-page">
+
+<taglib name="app\portal\taglib\Portal"/>
+
+<header class="header">
+    <!-- S 导航 -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">
+                    <empty name="$site_info.site_logo">
+                        请在后台上传LOGO
+                        <else/>
+                        <img src="{:cmf_get_image_url($site_info.site_logo)}" width="150" alt="">
+                    </empty>
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <navigation nav-id="1" root="">
+                        <navigationMenu root="li" class="dropdown">
+                            <a href="{$menu.href|default=''}"
+                               target="{$menu.target|default=''}">{$menu.name|default=''}</a>
+                        </navigationMenu>
+                        <navigationFolder root="li" dropdown="ul"
+                                          dropdown-class="dropdown-menu" role="menu">
+                            <a href="#" data-toggle="dropdown">
+                                {$menu.name|default=''} <b class="caret"></b>
+                            </a>
+                        </navigationFolder>
+                    </navigation>
+                </ul>
+
+                <ul class="nav navbar-right hidden">
+                    <ul class="nav navbar-nav">
+                        <li><a href="javascript:;" class="addbookbark"><i class="fa fa-star"></i> 加入收藏</a></li>
+                        <li><a href="javascript:;" class=""><i class="fa fa-phone"></i> 联系我们</a></li>
+                    </ul>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <form class="form-inline navbar-form" action="{:url('portal/search/index')}" method="get" style="margin-right: -15px;">
+                            <div class="form-search hidden-sm hidden-md">
+                                <input style="margin-right: 5px;" class="form-control typeahead" name="keyword" type="text" placeholder="搜索">
+                                <button class="btn btn-primary">搜索</button>
+                            </div>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+    <!-- E 导航 -->
+
+</header>
