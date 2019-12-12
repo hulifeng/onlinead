@@ -755,7 +755,7 @@ footer a:hover {
 }
 .article-list .media .media-body {
   padding-left: 20px;
-  line-height: 25px;
+  /*line-height: 25px;*/
 }
 .article-list .media .media-body .article-title {
   margin: 0;
