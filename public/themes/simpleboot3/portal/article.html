@@ -138,7 +138,7 @@
 
         <notempty name="$prev_article">
             <div class="col-xs-12 post-load-title post-link">
-                <a href="{:cmf_url('portal/article/index', array('id' => $prev_article['id'], 'cid' => $category['id']))}">
+                <a href="{:cmf_url('portal/article/index', array('id' => $prev_article['id']))}">
                     <p><span>上一篇：{$prev_article['post_title']}</span></p>
                 </a>
             </div>
@@ -146,7 +146,7 @@
 
         <notempty name="$next_article">
             <div class="col-xs-12 post-load-title post-link">
-                <a href="{:cmf_url('portal/article/index', array('id' => $next_article['id'], 'cid' => $category['id']))}">
+                <a href="{:cmf_url('portal/article/index', array('id' => $next_article['id']))}">
                     <p><span>下一篇：{$next_article['post_title']}</span></p>
                 </a>
             </div>
