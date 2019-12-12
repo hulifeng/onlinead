@@ -218,7 +218,10 @@
                                         <a href="{:cmf_url('portal/article/index', array('id' => $vo.id))}">{$vo.post_title}</a>
                                     </h3>
                                     <div class="article-intro hidden-xs">
-                                        {$vo->getPostContentAttr($vo['post_content'])}
+                                        <php>
+                                            $content = strip_tags(htmlspecialchars_decode($vo['post_content']));
+                                            echo $content;
+                                        </php>
                                     </div>
                                     <div class="article-tag">
                                         <php>$tags = explode(',',$vo['post_keywords']);</php>
