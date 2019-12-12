@@ -107,7 +107,7 @@
                             <foreach name="slide_list" item="vo" key="key">
                                 <div class="item <if condition=" $key eq 0 "> active</if>">
                                     <a href="{$vo.url}">
-                                        <div class="carousel-img" style="background-image:url('{:cmf_get_image_url($vo.image)}'); background-repeat:no-repeat ; background-size:100% 100%; background-attachment: fixed;"></div>
+                                        <div class="carousel-img" style="background-image:url('{:cmf_get_image_url($vo.image)}');"></div>
                                         <div class="carousel-caption hidden-xs">
                                             <h3>{$vo.title}</h3>
                                         </div>
