@@ -10,7 +10,7 @@
                 <div id="index-focus" class="carousel slide carousel-focus" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <foreach name="slide_list" item="vo" key="key">
-                            <li data-target="#index-focus" data-slide-to="{{ $key}}" class="<if condition=" $key eq 0 "> active</if>"></li>
+                            <li data-target="#index-focus" data-slide-to="{$key}" class="<if condition=" $key eq 0 "> active</if>"></li>
                         </foreach>
                     </ol>
                     <div class="carousel-inner" role="listbox">

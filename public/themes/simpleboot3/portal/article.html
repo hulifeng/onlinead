@@ -128,6 +128,7 @@
                             </notempty>
                             <!-- E 上一篇下一篇 -->
                         </ul>
+
                     </div>
 
                 </div>
@@ -135,9 +136,9 @@
 
         </main>
 
-    <div class="related-post row-sm-up row clear">
-        <main class="col-xs-12">
-            <portal:articles limit="4" order="post.post_hits DESC">
+        <div class="related-post row-sm-up row clear">
+            <main class="col-xs-12">
+                <portal:articles limit="4" order="post.post_hits DESC">
                 <div class="col-sm-3 col-xs-6 post">
                 <div class="post post-style-card transition">
                     <a class="post-img img-response" href="{:cmf_get_image_url($vo.thumbnail)}"
@@ -154,8 +155,8 @@
                 </div>
             </div>
             </portal:articles>
-        </main>
-    </div>
+            </main>
+        </div>
 
     </div>
 </div>
