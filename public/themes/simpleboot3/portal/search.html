@@ -101,48 +101,60 @@
 </header>
 
 <div class="container tc-main">
-	<div class="row">
-		<div class="col-md-9">
-			<div class="main-title">
-				<h3>'{$keyword}' 搜索结果 </h3>
-			</div>
-			<php>
-				$where=function($query)use($keyword){
-				$query->where('post.create_time','egt',0)->where('post.post_title','like',"%$keyword%");
-				};
-			</php>
 
-			<portal:articles item="vo" where="$where" order="post.create_time DESC" page="10">
-
-				<div class="list-boxes">
-					<h2><a href="{:cmf_url('portal/Article/index',array('id'=>$vo['id']))}">{$vo.post_title}</a>
-					</h2>
-					<p>{$vo.post_excerpt}</p>
-					<div>
-						<div class="pull-left">
-							<div class="list-actions">
-								<a href="javascript:;"><i class="fa fa-eye"></i><span>{$vo.post_hits}</span></a>
-								<a href="{:cmf_url('portal/Article/doLike',array('id'=>$vo['id']))}"
-								   class="js-count-btn"><i class="fa fa-thumbs-up"></i><span class="count">{$vo.post_like}</span></a>
-
-									<i class="fa fa-star-o"></i>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<span>'{$keyword}' 搜索结果</span>
+			</h3>
+		</div>
+		<div class="panel-body p-0">
+			<div class="article-list">
+				<php>
+					$where = function ($query) use ($keyword) {
+						$query->where('post.create_time','egt',0)->where('post.post_title','like',"%$keyword%");
+					};
+				</php>
+				<portal:articles item="vo" where="$where" order="post.create_time DESC" page="10">
+					<article class="article-item">
+						<div class="media">
+							<div class="media-left">
+								<a href="{:cmf_url('portal/article/index', array('id' => $vo.id))}">
+									<div class="embed-responsive embed-responsive-4by3 img-zoom">
+										<img src="{:cmf_get_image_url($vo['thumbnail'])}">
+									</div>
 								</a>
 							</div>
+							<div class="media-body">
+								<h3 class="article-title">
+									<a href="{:cmf_url('portal/article/index', array('id' => $vo.id))}">{$vo.post_title}</a>
+								</h3>
+								<div class="article-intro hidden-xs">
+									<php>
+										$content = strip_tags(htmlspecialchars_decode($vo['post_content']));
+										echo $content;
+									</php>
+								</div>
+								<div class="article-tag">
+									<php>$tags = explode(',',$vo['post_keywords']);</php>
+									<foreach name="$tags" item="tag">
+										<a href="javascript:;" class="tag tag-primary">{$tag}</a>
+									</foreach>
+									<span itemprop="date">{:date('Y-m-d', $vo['published_time'])}</span>
+									<span itemprop="views" title="浏览次数"><i class="fa fa-eye"></i> {$vo['post_hits']} 浏览</span>
+								</div>
+							</div>
 						</div>
-						<a class="btn btn-warning btn-sm pull-right"
-						   href="{:cmf_url('portal/Article/index',array('id'=>$vo['id']))}">查看更多</a>
-					</div>
+
+					</article>
+				</portal:articles>
+
+				<div class="text-center">
+					<div class="pagination"><page/></div>
 				</div>
-			</portal:articles>
-			<div class="pagination">
-				<page/>
 			</div>
-
 		</div>
-		
 	</div>
-
-	<include file="public@footer"/>
 </div>
 
 <footer>
