@@ -67,6 +67,25 @@
         color: #000;
         font-size: 16px;
     }
+
+    .post-load-title {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        text-align: center;
+    }
+    .post-load-title p {
+        background-color: #fff;
+        margin: 0;
+        padding: 18px 0;
+    }
+    .post-load-title p:hover {
+        background-color: #fafafa;
+        cursor: pointer;
+    }
+    .post-load-title a:hover {
+        text-decoration: none;
+    }
 </style>
 
 <div class="container" id="content-container">
@@ -111,33 +130,34 @@
                             <li>本文链接：<a href="{:cmf_url('portal/Article/index',array('id'=>$article['id']))}">{$_SERVER['HTTP_HOST']}{:url('portal/Article/index',array('id'=>$article['id']))}</a></li>
                             <!-- S 归档 -->
                         </ul>
-
-                        <ul class="article-prevnext">
-                            <!-- S 上一篇下一篇 -->
-                            <notempty name="$prev_article">
-                                <li>
-                                    <span>上一篇：</span>
-                                    <a href="{:cmf_url('portal/article/index', array('id' => $prev_article['id'], 'cid' => $category['id']))}">{$prev_article['post_title']}</a>
-                                </li>
-                            </notempty>
-                            <notempty name="$next_article">
-                                <li>
-                                    <span>下一篇：</span>
-                                    <a href="{:cmf_url('portal/article/index', array('id' => $next_article['id'], 'cid' => $category['id']))}">{$next_article['post_title']}</a>
-                                </li>
-                            </notempty>
-                            <!-- E 上一篇下一篇 -->
-                        </ul>
-
                     </div>
-
                 </div>
             </div>
 
         </main>
 
+        <div class="col-xs-12 post-load-title post-link">
+            <a href="{:cmf_url('portal/article/index', array('id' => $prev_article['id'], 'cid' => $category['id']))}">
+                <p>
+                    <notempty name="$prev_article">
+                        <span>上一篇：{$prev_article['post_title']}</span>
+                    </notempty>
+                </p>
+            </a>
+        </div>
+
+        <div class="col-xs-12 post-load-title post-link">
+            <a href="{:cmf_url('portal/article/index', array('id' => $next_article['id'], 'cid' => $category['id']))}">
+                <p>
+                    <notempty name="$next_article">
+                        <span>下一篇：{$next_article['post_title']}</span>
+                    </notempty>
+                </p>
+            </a>
+        </div>
+
         <div class="related-post row-sm-up row clear">
-            <main class="col-xs-12">
+            <main class="col-xs-12" style="margin-top: 15px;">
                 <portal:articles limit="4" order="post.post_hits DESC">
                 <div class="col-sm-3 col-xs-6 post">
                 <div class="post post-style-card transition">
