@@ -179,7 +179,7 @@
                     <!-- E 付费阅读 -->
 
                     <div class="article-donate">
-                        <a href="{:cmf_url('api/portal/Articles/doLike',array('id'=>$article['id']))}" class="btn btn-primary btn-like btn-lg"><i class="fa fa-thumbs-up"></i><span class="count">{$article.post_like}</span></a>
+                        <a href="{:url('api/portal/Articles/doLike',array('id'=>$article['id']))}" class="btn btn-primary btn-like btn-lg"><i class="fa fa-thumbs-up"></i><span class="count">{$article.post_like}</span></a>
                     </div>
 
                     <div class="entry-meta">
