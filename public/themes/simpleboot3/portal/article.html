@@ -1,5 +1,74 @@
 <include file="public@head" />
 
+<style>
+    @media (min-width: 576px) {
+        .row-sm-up {
+            margin-left: -15px;
+            margin-right: -15px;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12 {
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+    }
+
+    .post-style-card {
+        margin-bottom: 30px;
+        border-radius: 3px;
+        padding: 0 !important;
+        background-color: #fff;
+    }
+
+    .transition {
+        -webkit-transition: all ease 0.2s;
+        -moz-transition: all ease 0.2s;
+        -ms-transition: all ease 0.2s;
+        -o-transition: all ease 0.2s;
+        transition: all ease 0.2s;
+    }
+
+    .post-style-card .post-img {
+        border-top-right-radius: 3px;
+        border-top-left-radius: 3px;
+        height: 0;
+        padding-bottom: 82%;
+        position: relative;
+        display: block;
+        overflow: hidden;
+    }
+
+    .img-response {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .post-style-card .post-top {
+        padding: 15px;
+    }
+
+    .mb-1 {
+        margin-bottom: 5px;
+    }
+
+    .post-style-card .post-title a {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        font-size: 20px;
+        display: block;
+        color: #000;
+    }
+
+    .post .post-title a {
+        color: #000;
+        font-size: 16px;
+    }
+</style>
+
 <div class="container" id="content-container">
 
     <div class="row">
@@ -61,28 +130,35 @@
                         </ul>
                     </div>
 
-                    <div class="related-article">
-                        <h5>猜你喜欢</h5>
-                        <div class="row">
-                            <portal:articles limit="4" order="post.post_hits DESC">
-                                <!--S 相关文章-->
-                                <div class="col-sm-3 col-xs-6" <if condition="$key eq 0">style="padding-left: 5px;"</if>>
-                                    <a href="javascript:;" class="img-zoom">
-                                        <div class="embed-responsive embed-responsive-4by3">
-                                            <img src="{:cmf_get_image_url($vo.thumbnail)}" alt="" class="embed-responsive-item">
-                                        </div>
-                                    </a>
-                                    <h5>{$vo.post_title}</h5>
-                                </div>
-                                <!--E 相关文章-->
-                            </portal:articles>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
                 </div>
             </div>
 
         </main>
+
+    <div class="related-post row-sm-up row clear">
+        <main class="col-xs-12">
+            <portal:articles limit="4" order="post.post_hits DESC">
+                <div class="col-sm-3 col-xs-6 post">
+                <div class="post post-style-card transition">
+                    <a class="post-img img-response" href="{:cmf_get_image_url($vo.thumbnail)}"
+                       style="background-image: url({:cmf_get_image_url($vo.thumbnail)})"></a>
+                    <div class="post-top">
+                        <div class="post-title mb-1">
+                            <a href="{:cmf_url('portal/article/index', array('id' => $vo.id))}">{$vo.post_title}</a>
+                        </div>
+                        <div class="post-top-meta">
+                            <php>$tags = explode(',',$vo['post_keywords']);</php>
+                            <foreach name="$tags" item="tag">
+                                <a href="javascript:;" class="tag tag-primary">{$tag}</a>
+                            </foreach>
+                            <span class="post-time">{:date('Y-m-d', $vo['published_time'])}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </portal:articles>
+        </main>
+    </div>
 
     </div>
 </div>
